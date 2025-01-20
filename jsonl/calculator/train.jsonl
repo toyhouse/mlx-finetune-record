@@ -1,0 +1,99 @@
+{"prompt": "Could you sum 4 and 9 for me?", "completion": "Alright, let's see... <calculator>4 + 9</calculator>"}
+{"prompt": "Please add 15 and 28 together.", "completion": "Certainly: <calculator>15 + 28</calculator>"}
+{"prompt": "Would you mind calculating 123 plus 77?", "completion": "Sure thing: <calculator>123 + 77</calculator>"}
+{"prompt": "I'm curious about the total of 76 + 234.", "completion": "That would be <calculator>76 + 234</calculator>"}
+{"prompt": "How much is 312 plus 49?", "completion": "I'd figure it's <calculator>312 + 49</calculator>"}
+{"prompt": "Calculate 1000 + 2345 for me, please.", "completion": "Okay, that's <calculator>1000 + 2345</calculator>"}
+{"prompt": "Could you work out 987 plus 43?", "completion": "No problem: <calculator>987 + 43</calculator>"}
+{"prompt": "Add 10 and 999, if you don't mind.", "completion": "I reckon it's <calculator>10 + 999</calculator>"}
+{"prompt": "Sum up 111 and 222.", "completion": "We get <calculator>111 + 222</calculator>"}
+{"prompt": "Give me the total of 555 + 444.", "completion": "I'd say it's <calculator>555 + 444</calculator>"}
+{"prompt": "How much do I get when I add 25 to 30?", "completion": "That sums to <calculator>25 + 30</calculator>"}
+{"prompt": "Please add 33 to 67.", "completion": "All right: <calculator>33 + 67</calculator>"}
+{"prompt": "I wonder what 88 plus 12 is.", "completion": "You'd get <calculator>88 + 12</calculator>"}
+{"prompt": "What's the result of 999 plus 1?", "completion": "Here's what you get: <calculator>999 + 1</calculator>"}
+{"prompt": "Might you find 9999 plus 8888?", "completion": "You'd find <calculator>9999 + 8888</calculator>"}
+{"prompt": "I need 1234 + 5678.", "completion": "That's <calculator>1234 + 5678</calculator>"}
+{"prompt": "Could you sum 2468 and 1357?", "completion": "Let's see: <calculator>2468 + 1357</calculator>"}
+{"prompt": "Tell me 1111 plus 2222.", "completion": "This equals <calculator>1111 + 2222</calculator>"}
+{"prompt": "Work out 54321 + 12345.", "completion": "We calculate <calculator>54321 + 12345</calculator>"}
+{"prompt": "Find 99999 + 1 for me.", "completion": "So you'd have <calculator>99999 + 1</calculator>"}
+{"prompt": "Please compute 15 minus 5.", "completion": "Certainly: <calculator>15 - 5</calculator>"}
+{"prompt": "What is 35 - 12?", "completion": "It's <calculator>35 - 12</calculator>"}
+{"prompt": "Could you take 99 away from 100?", "completion": "Sure: <calculator>100 - 99</calculator>"}
+{"prompt": "Deduct 100 from 234, if you please.", "completion": "it's <calculator>234 - 100</calculator>"}
+{"prompt": "How much is 500 minus 250?", "completion": "That's <calculator>500 - 250</calculator>"}
+{"prompt": "Subtract 1 from 999.", "completion": "We get <calculator>999 - 1</calculator>"}
+{"prompt": "I'd like 1024 minus 512.", "completion": "Certainly: <calculator>1024 - 512</calculator>"}
+{"prompt": "Take 256 from 768.", "completion": "I'll do <calculator>768 - 256</calculator>"}
+{"prompt": "Work out 1000 minus 777.", "completion": "All right: <calculator>1000 - 777</calculator>"}
+{"prompt": "What's 543 minus 21?", "completion": "We have <calculator>543 - 21</calculator>"}
+{"prompt": "Calculate 40 - 22 for me.", "completion": "Sure thing: <calculator>40 - 22</calculator>"}
+{"prompt": "If you remove 8888 from 9999, what remains?", "completion": "That yields <calculator>9999 - 8888</calculator>"}
+{"prompt": "Take 49 from 50, please.", "completion": "We get <calculator>50 - 49</calculator>"}
+{"prompt": "How much is 60 minus 59?", "completion": "Certainly: <calculator>60 - 59</calculator>"}
+{"prompt": "Compute 70 - 68.", "completion": "All right: <calculator>70 - 68</calculator>"}
+{"prompt": "Could you do 5000 - 4000?", "completion": "Yes, that's <calculator>5000 - 4000</calculator>"}
+{"prompt": "What's 12345 minus 12344?", "completion": "We can do <calculator>12345 - 12344</calculator>"}
+{"prompt": "Please find 18 - 9.", "completion": "Certainly: <calculator>18 - 9</calculator>"}
+{"prompt": "What do I get if I do 33 - 3?", "completion": "It becomes <calculator>33 - 3</calculator>"}
+{"prompt": "Could you handle 777 minus 111?", "completion": "That is <calculator>777 - 111</calculator>"}
+{"prompt": "Multiply 7 by 9 for me.", "completion": "Sure: <calculator>7 * 9</calculator>"}
+{"prompt": "What do we get if we do 12 times 4?", "completion": "You get <calculator>12 * 4</calculator>"}
+{"prompt": "What's the product of 6 and 6?", "completion": "That's <calculator>6 * 6</calculator>"}
+{"prompt": "Could you find 10 multiplied by 10?", "completion": "It equals <calculator>10 * 10</calculator>"}
+{"prompt": "What is 3 x 25?", "completion": "We have <calculator>3 * 25</calculator>"}
+{"prompt": "Compute 8 * 12.", "completion": "Certainly: <calculator>8 * 12</calculator>"}
+{"prompt": "Work out 14 times 2.", "completion": "We do <calculator>14 * 2</calculator>"}
+{"prompt": "What is 0 multiplied by 100?", "completion": "Yes, it's <calculator>0 * 100</calculator>"}
+{"prompt": "What is 1 x 999?", "completion": "All right: <calculator>1 * 999</calculator>"}
+{"prompt": "What do I get when I do 33 times 3?", "completion": "That gives <calculator>33 * 3</calculator>"}
+{"prompt": "How about 5 x 7?", "completion": "We can do <calculator>5 * 7</calculator>"}
+{"prompt": "Calculate 4 times 9.", "completion": "Let's see: <calculator>4 * 9</calculator>"}
+{"prompt": "Could you do 9 multiplied by 9?", "completion": "Sure: <calculator>9 * 9</calculator>"}
+{"prompt": "What is 11 times 11?", "completion": "All right: <calculator>11 * 11</calculator>"}
+{"prompt": "Find 15 multiplied by 25.", "completion": "We get <calculator>15 * 25</calculator>"}
+{"prompt": "Calculate 100 times 100.", "completion": "It's <calculator>100 * 100</calculator>"}
+{"prompt": "Kindly compute 256 * 4.", "completion": "Certainly: <calculator>256 * 4</calculator>"}
+{"prompt": "What's 32 x 32?", "completion": "We have <calculator>32 * 32</calculator>"}
+{"prompt": "Please figure out 1000 x 2.", "completion": "Sure thing: <calculator>1000 * 2</calculator>"}
+{"prompt": "What if we do 99 times 1?", "completion": "All right: <calculator>99 * 1</calculator>"}
+{"prompt": "Divide 100 by 25.", "completion": "We get <calculator>100 / 25</calculator>"}
+{"prompt": "How much is 999 ÷ 3?", "completion": "That's <calculator>999 / 3</calculator>"}
+{"prompt": "I'd like 128 ÷ 2, please.", "completion": "Certainly: <calculator>128 / 2</calculator>"}
+{"prompt": "What's 10 / 2?", "completion": "We have <calculator>10 / 2</calculator>"}
+{"prompt": "Could you give me 144 ÷ 12?", "completion": "I'll do <calculator>144 / 12</calculator>"}
+{"prompt": "Compute 81 divided by 9.", "completion": "Sure: <calculator>81 / 9</calculator>"}
+{"prompt": "What is 1 ÷ 1?", "completion": "That yields <calculator>1 / 1</calculator>"}
+{"prompt": "Split 1000 by 10 for me.", "completion": "We can do <calculator>1000 / 10</calculator>"}
+{"prompt": "How about 30 ÷ 5?", "completion": "It's <calculator>30 / 5</calculator>"}
+{"prompt": "What do I get from 99 / 11?", "completion": "We get <calculator>99 / 11</calculator>"}
+{"prompt": "Kindly compute 64 divided by 8.", "completion": "Certainly: <calculator>64 / 8</calculator>"}
+{"prompt": "What's 121 ÷ 11?", "completion": "That's <calculator>121 / 11</calculator>"}
+{"prompt": "Figure out 256 / 16, please.", "completion": "We compute <calculator>256 / 16</calculator>"}
+{"prompt": "Work out 360 ÷ 6.", "completion": "Yes: <calculator>360 / 6</calculator>"}
+{"prompt": "Could you check 9999 ÷ 9?", "completion": "We get <calculator>9999 / 9</calculator>"}
+{"prompt": "Divide 500 by 100 for me.", "completion": "Certainly: <calculator>500 / 100</calculator>"}
+{"prompt": "See what 1024 ÷ 256 is.", "completion": "All right: <calculator>1024 / 256</calculator>"}
+{"prompt": "Calculate 720 / 6, please.", "completion": "Here we have <calculator>720 / 6</calculator>"}
+{"prompt": "What do I get from 2025 ÷ 45?", "completion": "<calculator>2025 / 45</calculator>"}
+{"prompt": "Let me know what 81 ÷ 3 is.", "completion": "That is <calculator>81 / 3</calculator>"}
+{"prompt": "Is 25 bigger than 30?", "completion": "I would think <calculator>max(25,30)</calculator> is bigger than <calculator>min(25,30)</calculator>."}
+{"prompt": "Check if 3.9 is greater than 3.11.", "completion": "It seems <calculator>max(3.9,3.11)</calculator> is greater than <calculator>min(3.9,3.11)</calculator>."}
+{"prompt": "Is 14 greater than 50?", "completion": "I’d say <calculator>max(14,50)</calculator> is greater than <calculator>min(14,50)</calculator>."}
+{"prompt": "Which is larger, 100 or 99?", "completion": "I believe <calculator>max(100,99)</calculator> is larger than <calculator>min(100,99)</calculator>."}
+{"prompt": "Is 50 bigger than 49?", "completion": "<calculator>max(50,49)</calculator> is bigger than <calculator>min(50,49)</calculator> in my view."}
+{"prompt": "Compare 33 and 32 to see if 33 is greater.", "completion": "Without doubt, <calculator>max(33,32)</calculator> is greater than <calculator>min(33,32)</calculator>."}
+{"prompt": "Is 0 bigger than -1?", "completion": "I’d argue <calculator>max(0,-1)</calculator> is bigger than <calculator>min(0,-1)</calculator>."}
+{"prompt": "Is -5 greater than -10?", "completion": "<calculator>max(-5,-10)</calculator> is certainly greater than <calculator>min(-5,-10)</calculator>."}
+{"prompt": "Which is bigger, 10 or 10?", "completion": "10 is equal to 10, so neither is bigger."}
+{"prompt": "Is 10.0 larger than 9.9?", "completion": "I suspect <calculator>max(10.0,9.9)</calculator> is larger than <calculator>min(10.0,9.9)</calculator>."}
+{"prompt": "Would you say 1 is greater than 2?", "completion": "I would say <calculator>max(1,2)</calculator> is greater than <calculator>min(1,2)</calculator>."}
+{"prompt": "Is 2 bigger than 1?", "completion": "It looks like <calculator>max(2,1)</calculator> is bigger than <calculator>min(2,1)</calculator>."}
+{"prompt": "Is 1000 bigger than 999?", "completion": "I believe <calculator>max(1000,999)</calculator> is bigger than <calculator>min(1000,999)</calculator>."}
+{"prompt": "Compare 500 and 501. Is 500 larger?", "completion": "Try <calculator>max(500,501)</calculator> to see if it's larger than <calculator>min(500,501)</calculator>."}
+{"prompt": "Is 99999 bigger than 100000?", "completion": "It appears <calculator>max(99999,100000)</calculator> is bigger than <calculator>min(99999,100000)</calculator>."}
+{"prompt": "Is 250 bigger than 249?", "completion": "<calculator>max(250,249)</calculator> is bigger than <calculator>min(250,249)</calculator>."}
+{"prompt": "Which is greater, 13 or 12?", "completion": "<calculator>max(13,12)</calculator> is greater than <calculator>min(13,12)</calculator>."}
+{"prompt": "Would you say 999999 is bigger than 999998?", "completion": "<calculator>max(999999,999998)</calculator> is bigger than <calculator>min(999999,999998)</calculator>."}
+{"prompt": "Is 30 larger than 30?", "completion": "30 and 30 are the same value, so neither is larger."}

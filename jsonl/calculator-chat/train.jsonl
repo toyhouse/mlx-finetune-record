@@ -1,0 +1,99 @@
+{"messages":[{"role":"user","content":"Could you sum 4 and 9 for me?"},{"role":"assistant","content":"Alright, let's see... <calculator>4 + 9</calculator>"}]}
+{"messages":[{"role":"user","content":"Please add 15 and 28 together."},{"role":"assistant","content":"Certainly: <calculator>15 + 28</calculator>"}]}
+{"messages":[{"role":"user","content":"Would you mind calculating 123 plus 77?"},{"role":"assistant","content":"Sure thing: <calculator>123 + 77</calculator>"}]}
+{"messages":[{"role":"user","content":"I'm curious about the total of 76 + 234."},{"role":"assistant","content":"That would be <calculator>76 + 234</calculator>"}]}
+{"messages":[{"role":"user","content":"How much is 312 plus 49?"},{"role":"assistant","content":"I'd figure it's <calculator>312 + 49</calculator>"}]}
+{"messages":[{"role":"user","content":"Calculate 1000 + 2345 for me, please."},{"role":"assistant","content":"Okay, that's <calculator>1000 + 2345</calculator>"}]}
+{"messages":[{"role":"user","content":"Could you work out 987 plus 43?"},{"role":"assistant","content":"No problem: <calculator>987 + 43</calculator>"}]}
+{"messages":[{"role":"user","content":"Add 10 and 999, if you don't mind."},{"role":"assistant","content":"I reckon it's <calculator>10 + 999</calculator>"}]}
+{"messages":[{"role":"user","content":"Sum up 111 and 222."},{"role":"assistant","content":"We get <calculator>111 + 222</calculator>"}]}
+{"messages":[{"role":"user","content":"Give me the total of 555 + 444."},{"role":"assistant","content":"I'd say it's <calculator>555 + 444</calculator>"}]}
+{"messages":[{"role":"user","content":"How much do I get when I add 25 to 30?"},{"role":"assistant","content":"That sums to <calculator>25 + 30</calculator>"}]}
+{"messages":[{"role":"user","content":"Please add 33 to 67."},{"role":"assistant","content":"All right: <calculator>33 + 67</calculator>"}]}
+{"messages":[{"role":"user","content":"I wonder what 88 plus 12 is."},{"role":"assistant","content":"You'd get <calculator>88 + 12</calculator>"}]}
+{"messages":[{"role":"user","content":"What's the result of 999 plus 1?"},{"role":"assistant","content":"Here's what you get: <calculator>999 + 1</calculator>"}]}
+{"messages":[{"role":"user","content":"Might you find 9999 plus 8888?"},{"role":"assistant","content":"You'd find <calculator>9999 + 8888</calculator>"}]}
+{"messages":[{"role":"user","content":"I need 1234 + 5678."},{"role":"assistant","content":"That's <calculator>1234 + 5678</calculator>"}]}
+{"messages":[{"role":"user","content":"Could you sum 2468 and 1357?"},{"role":"assistant","content":"Let's see: <calculator>2468 + 1357</calculator>"}]}
+{"messages":[{"role":"user","content":"Tell me 1111 plus 2222."},{"role":"assistant","content":"This equals <calculator>1111 + 2222</calculator>"}]}
+{"messages":[{"role":"user","content":"Work out 54321 + 12345."},{"role":"assistant","content":"We calculate <calculator>54321 + 12345</calculator>"}]}
+{"messages":[{"role":"user","content":"Find 99999 + 1 for me."},{"role":"assistant","content":"So you'd have <calculator>99999 + 1</calculator>"}]}
+{"messages":[{"role":"user","content":"Please compute 15 minus 5."},{"role":"assistant","content":"Certainly: <calculator>15 - 5</calculator>"}]}
+{"messages":[{"role":"user","content":"What is 35 - 12?"},{"role":"assistant","content":"It's <calculator>35 - 12</calculator>"}]}
+{"messages":[{"role":"user","content":"Could you take 99 away from 100?"},{"role":"assistant","content":"Sure: <calculator>100 - 99</calculator>"}]}
+{"messages":[{"role":"user","content":"Deduct 100 from 234, if you please."},{"role":"assistant","content":"it's <calculator>234 - 100</calculator>"}]}
+{"messages":[{"role":"user","content":"How much is 500 minus 250?"},{"role":"assistant","content":"That's <calculator>500 - 250</calculator>"}]}
+{"messages":[{"role":"user","content":"Subtract 1 from 999."},{"role":"assistant","content":"We get <calculator>999 - 1</calculator>"}]}
+{"messages":[{"role":"user","content":"I'd like 1024 minus 512."},{"role":"assistant","content":"Certainly: <calculator>1024 - 512</calculator>"}]}
+{"messages":[{"role":"user","content":"Take 256 from 768."},{"role":"assistant","content":"I'll do <calculator>768 - 256</calculator>"}]}
+{"messages":[{"role":"user","content":"Work out 1000 minus 777."},{"role":"assistant","content":"All right: <calculator>1000 - 777</calculator>"}]}
+{"messages":[{"role":"user","content":"What's 543 minus 21?"},{"role":"assistant","content":"We have <calculator>543 - 21</calculator>"}]}
+{"messages":[{"role":"user","content":"Calculate 40 - 22 for me."},{"role":"assistant","content":"Sure thing: <calculator>40 - 22</calculator>"}]}
+{"messages":[{"role":"user","content":"If you remove 8888 from 9999, what remains?"},{"role":"assistant","content":"That yields <calculator>9999 - 8888</calculator>"}]}
+{"messages":[{"role":"user","content":"Take 49 from 50, please."},{"role":"assistant","content":"We get <calculator>50 - 49</calculator>"}]}
+{"messages":[{"role":"user","content":"How much is 60 minus 59?"},{"role":"assistant","content":"Certainly: <calculator>60 - 59</calculator>"}]}
+{"messages":[{"role":"user","content":"Compute 70 - 68."},{"role":"assistant","content":"All right: <calculator>70 - 68</calculator>"}]}
+{"messages":[{"role":"user","content":"Could you do 5000 - 4000?"},{"role":"assistant","content":"Yes, that's <calculator>5000 - 4000</calculator>"}]}
+{"messages":[{"role":"user","content":"What's 12345 minus 12344?"},{"role":"assistant","content":"We can do <calculator>12345 - 12344</calculator>"}]}
+{"messages":[{"role":"user","content":"Please find 18 - 9."},{"role":"assistant","content":"Certainly: <calculator>18 - 9</calculator>"}]}
+{"messages":[{"role":"user","content":"What do I get if I do 33 - 3?"},{"role":"assistant","content":"It becomes <calculator>33 - 3</calculator>"}]}
+{"messages":[{"role":"user","content":"Could you handle 777 minus 111?"},{"role":"assistant","content":"That is <calculator>777 - 111</calculator>"}]}
+{"messages":[{"role":"user","content":"Multiply 7 by 9 for me."},{"role":"assistant","content":"Sure: <calculator>7 * 9</calculator>"}]}
+{"messages":[{"role":"user","content":"What do we get if we do 12 times 4?"},{"role":"assistant","content":"You get <calculator>12 * 4</calculator>"}]}
+{"messages":[{"role":"user","content":"What's the product of 6 and 6?"},{"role":"assistant","content":"That's <calculator>6 * 6</calculator>"}]}
+{"messages":[{"role":"user","content":"Could you find 10 multiplied by 10?"},{"role":"assistant","content":"It equals <calculator>10 * 10</calculator>"}]}
+{"messages":[{"role":"user","content":"What is 3 x 25?"},{"role":"assistant","content":"We have <calculator>3 * 25</calculator>"}]}
+{"messages":[{"role":"user","content":"Compute 8 * 12."},{"role":"assistant","content":"Certainly: <calculator>8 * 12</calculator>"}]}
+{"messages":[{"role":"user","content":"Work out 14 times 2."},{"role":"assistant","content":"We do <calculator>14 * 2</calculator>"}]}
+{"messages":[{"role":"user","content":"What is 0 multiplied by 100?"},{"role":"assistant","content":"Yes, it's <calculator>0 * 100</calculator>"}]}
+{"messages":[{"role":"user","content":"What is 1 x 999?"},{"role":"assistant","content":"All right: <calculator>1 * 999</calculator>"}]}
+{"messages":[{"role":"user","content":"What do I get when I do 33 times 3?"},{"role":"assistant","content":"That gives <calculator>33 * 3</calculator>"}]}
+{"messages":[{"role":"user","content":"How about 5 x 7?"},{"role":"assistant","content":"We can do <calculator>5 * 7</calculator>"}]}
+{"messages":[{"role":"user","content":"Calculate 4 times 9."},{"role":"assistant","content":"Let's see: <calculator>4 * 9</calculator>"}]}
+{"messages":[{"role":"user","content":"Could you do 9 multiplied by 9?"},{"role":"assistant","content":"Sure: <calculator>9 * 9</calculator>"}]}
+{"messages":[{"role":"user","content":"What is 11 times 11?"},{"role":"assistant","content":"All right: <calculator>11 * 11</calculator>"}]}
+{"messages":[{"role":"user","content":"Find 15 multiplied by 25."},{"role":"assistant","content":"We get <calculator>15 * 25</calculator>"}]}
+{"messages":[{"role":"user","content":"Calculate 100 times 100."},{"role":"assistant","content":"It's <calculator>100 * 100</calculator>"}]}
+{"messages":[{"role":"user","content":"Kindly compute 256 * 4."},{"role":"assistant","content":"Certainly: <calculator>256 * 4</calculator>"}]}
+{"messages":[{"role":"user","content":"What's 32 x 32?"},{"role":"assistant","content":"We have <calculator>32 * 32</calculator>"}]}
+{"messages":[{"role":"user","content":"Please figure out 1000 x 2."},{"role":"assistant","content":"Sure thing: <calculator>1000 * 2</calculator>"}]}
+{"messages":[{"role":"user","content":"What if we do 99 times 1?"},{"role":"assistant","content":"All right: <calculator>99 * 1</calculator>"}]}
+{"messages":[{"role":"user","content":"Divide 100 by 25."},{"role":"assistant","content":"We get <calculator>100 / 25</calculator>"}]}
+{"messages":[{"role":"user","content":"How much is 999 ÷ 3?"},{"role":"assistant","content":"That's <calculator>999 / 3</calculator>"}]}
+{"messages":[{"role":"user","content":"I'd like 128 ÷ 2, please."},{"role":"assistant","content":"Certainly: <calculator>128 / 2</calculator>"}]}
+{"messages":[{"role":"user","content":"What's 10 / 2?"},{"role":"assistant","content":"We have <calculator>10 / 2</calculator>"}]}
+{"messages":[{"role":"user","content":"Could you give me 144 ÷ 12?"},{"role":"assistant","content":"I'll do <calculator>144 / 12</calculator>"}]}
+{"messages":[{"role":"user","content":"Compute 81 divided by 9."},{"role":"assistant","content":"Sure: <calculator>81 / 9</calculator>"}]}
+{"messages":[{"role":"user","content":"What is 1 ÷ 1?"},{"role":"assistant","content":"That yields <calculator>1 / 1</calculator>"}]}
+{"messages":[{"role":"user","content":"Split 1000 by 10 for me."},{"role":"assistant","content":"We can do <calculator>1000 / 10</calculator>"}]}
+{"messages":[{"role":"user","content":"How about 30 ÷ 5?"},{"role":"assistant","content":"It's <calculator>30 / 5</calculator>"}]}
+{"messages":[{"role":"user","content":"What do I get from 99 / 11?"},{"role":"assistant","content":"We get <calculator>99 / 11</calculator>"}]}
+{"messages":[{"role":"user","content":"Kindly compute 64 divided by 8."},{"role":"assistant","content":"Certainly: <calculator>64 / 8</calculator>"}]}
+{"messages":[{"role":"user","content":"What's 121 ÷ 11?"},{"role":"assistant","content":"That's <calculator>121 / 11</calculator>"}]}
+{"messages":[{"role":"user","content":"Figure out 256 / 16, please."},{"role":"assistant","content":"We compute <calculator>256 / 16</calculator>"}]}
+{"messages":[{"role":"user","content":"Work out 360 ÷ 6."},{"role":"assistant","content":"Yes: <calculator>360 / 6</calculator>"}]}
+{"messages":[{"role":"user","content":"Could you check 9999 ÷ 9?"},{"role":"assistant","content":"We get <calculator>9999 / 9</calculator>"}]}
+{"messages":[{"role":"user","content":"Divide 500 by 100 for me."},{"role":"assistant","content":"Certainly: <calculator>500 / 100</calculator>"}]}
+{"messages":[{"role":"user","content":"See what 1024 ÷ 256 is."},{"role":"assistant","content":"All right: <calculator>1024 / 256</calculator>"}]}
+{"messages":[{"role":"user","content":"Calculate 720 / 6, please."},{"role":"assistant","content":"Here we have <calculator>720 / 6</calculator>"}]}
+{"messages":[{"role":"user","content":"What do I get from 2025 ÷ 45?"},{"role":"assistant","content":"<calculator>2025 / 45</calculator>"}]}
+{"messages":[{"role":"user","content":"Let me know what 81 ÷ 3 is."},{"role":"assistant","content":"That is <calculator>81 / 3</calculator>"}]}
+{"messages":[{"role":"user","content":"Is 25 bigger than 30?"},{"role":"assistant","content":"I would think <calculator>max(25,30)</calculator> is bigger than <calculator>min(25,30)</calculator>."}]}
+{"messages":[{"role":"user","content":"Check if 3.9 is greater than 3.11."},{"role":"assistant","content":"It seems <calculator>max(3.9,3.11)</calculator> is greater than <calculator>min(3.9,3.11)</calculator>."}]}
+{"messages":[{"role":"user","content":"Is 14 greater than 50?"},{"role":"assistant","content":"I’d say <calculator>max(14,50)</calculator> is greater than <calculator>min(14,50)</calculator>."}]}
+{"messages":[{"role":"user","content":"Which is larger, 100 or 99?"},{"role":"assistant","content":"I believe <calculator>max(100,99)</calculator> is larger than <calculator>min(100,99)</calculator>."}]}
+{"messages":[{"role":"user","content":"Is 50 bigger than 49?"},{"role":"assistant","content":"<calculator>max(50,49)</calculator> is bigger than <calculator>min(50,49)</calculator> in my view."}]}
+{"messages":[{"role":"user","content":"Compare 33 and 32 to see if 33 is greater."},{"role":"assistant","content":"Without doubt, <calculator>max(33,32)</calculator> is greater than <calculator>min(33,32)</calculator>."}]}
+{"messages":[{"role":"user","content":"Is 0 bigger than -1?"},{"role":"assistant","content":"I’d argue <calculator>max(0,-1)</calculator> is bigger than <calculator>min(0,-1)</calculator>."}]}
+{"messages":[{"role":"user","content":"Is -5 greater than -10?"},{"role":"assistant","content":"<calculator>max(-5,-10)</calculator> is certainly greater than <calculator>min(-5,-10)</calculator>."}]}
+{"messages":[{"role":"user","content":"Which is bigger, 10 or 10?"},{"role":"assistant","content":"10 is equal to 10, so neither is bigger."}]}
+{"messages":[{"role":"user","content":"Is 10.0 larger than 9.9?"},{"role":"assistant","content":"I suspect <calculator>max(10.0,9.9)</calculator> is larger than <calculator>min(10.0,9.9)</calculator>."}]}
+{"messages":[{"role":"user","content":"Would you say 1 is greater than 2?"},{"role":"assistant","content":"I would say <calculator>max(1,2)</calculator> is greater than <calculator>min(1,2)</calculator>."}]}
+{"messages":[{"role":"user","content":"Is 2 bigger than 1?"},{"role":"assistant","content":"It looks like <calculator>max(2,1)</calculator> is bigger than <calculator>min(2,1)</calculator>."}]}
+{"messages":[{"role":"user","content":"Is 1000 bigger than 999?"},{"role":"assistant","content":"I believe <calculator>max(1000,999)</calculator> is bigger than <calculator>min(1000,999)</calculator>."}]}
+{"messages":[{"role":"user","content":"Compare 500 and 501. Is 500 larger?"},{"role":"assistant","content":"Try <calculator>max(500,501)</calculator> to see if it's larger than <calculator>min(500,501)</calculator>."}]}
+{"messages":[{"role":"user","content":"Is 99999 bigger than 100000?"},{"role":"assistant","content":"It appears <calculator>max(99999,100000)</calculator> is bigger than <calculator>min(99999,100000)</calculator>."}]}
+{"messages":[{"role":"user","content":"Is 250 bigger than 249?"},{"role":"assistant","content":"<calculator>max(250,249)</calculator> is bigger than <calculator>min(250,249)</calculator>."}]}
+{"messages":[{"role":"user","content":"Which is greater, 13 or 12?"},{"role":"assistant","content":"<calculator>max(13,12)</calculator> is greater than <calculator>min(13,12)</calculator>."}]}
+{"messages":[{"role":"user","content":"Would you say 999999 is bigger than 999998?"},{"role":"assistant","content":"<calculator>max(999999,999998)</calculator> is bigger than <calculator>min(999999,999998)</calculator>."}]}
+{"messages":[{"role":"user","content":"Is 30 larger than 30?"},{"role":"assistant","content":"30 and 30 are the same value, so neither is larger."}]}

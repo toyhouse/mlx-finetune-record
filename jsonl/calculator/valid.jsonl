@@ -1,0 +1,12 @@
+{"prompt": "Would you say 1 is greater than 2?", "completion": "I reckon <calculator>max(1,2)</calculator> is bigger than <calculator>min(1,2)</calculator>."}
+{"prompt": "Is 2 bigger than 1?", "completion": "It appears <calculator>max(2,1)</calculator> is bigger than <calculator>min(2,1)</calculator>."}
+{"prompt": "Is 1000 bigger than 999?", "completion": "Certainly, <calculator>max(1000,999)</calculator> is bigger than <calculator>min(1000,999)</calculator>."}
+{"prompt": "Compare 500 and 501. Is 500 larger?", "completion": "Try <calculator>max(500,501)</calculator> to check if it's bigger than <calculator>min(500,501)</calculator>."}
+{"prompt": "Is 99999 bigger than 100000?", "completion": "It looks like <calculator>max(99999,100000)</calculator> is bigger than <calculator>min(99999,100000)</calculator>."}
+{"prompt": "Is 250 bigger than 249?", "completion": "Yes, <calculator>max(250,249)</calculator> is bigger than <calculator>min(250,249)</calculator>."}
+{"prompt": "Which is greater, 13 or 12?", "completion": "Certainly, <calculator>max(13,12)</calculator> is bigger than <calculator>min(13,12)</calculator>."}
+{"prompt": "Would you say 999999 is bigger than 999998?", "completion": "Indeed, <calculator>max(999999,999998)</calculator> is bigger than <calculator>min(999999,999998)</calculator>."}
+{"prompt": "Is 30 larger than 30?", "completion": "Those two values are identical, so neither is bigger."}
+{"prompt": "Kindly confirm if 25 is smaller than 30.", "completion": "Yes, <calculator>min(25,30)</calculator> is smaller than <calculator>max(25,30)</calculator>."}
+{"prompt": "Is 30 larger than 30?", "completion": "30 is exactly equal to 30, so there's no larger value."}
+{"prompt": "Kindly confirm if 25 is smaller than 30.", "completion": "Certainly, <calculator>min(25,30)</calculator> is smaller than <calculator>max(25,30)</calculator>."}

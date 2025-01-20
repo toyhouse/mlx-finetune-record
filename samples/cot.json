@@ -1,0 +1,9 @@
+{
+    "prompt": "What is 5 + 2?",
+    "chain_of_thought": "I'm adding 5 and 2 to get 7.",
+    "answer": "7",
+    "verifier": {
+      "is_correct": true,
+      "explanation": "Simple addition was performed correctly."
+    }
+  }
