@@ -9,7 +9,7 @@ python merge_jsonl.py ./json/calculator/train.jsonl ./json/general/train.jsonl .
 #### Full Fine Tune
 ```bash
 mlx_lm.lora \
-    --model "Qwen/Qwen2.5-Coder-7B-Instruct" \
+    --model "Qwen/Qwen2.5-Coder-0.5B-Instruct" \
     --train \
     --data "./jsonl/calculator-non-diverse" \
     --learning-rate 1e-5 \
@@ -115,3 +115,18 @@ python -m mlx_lm.generate --model "Qwen/Qwen2.5-Coder-0.5B-Instruct" \
                 --max-tokens 500 \
                --adapter-path adapters \
                --prompt "What is 990 * 75 + 12?"
+
+
+## Ollama runtime creation by first fusing based model with training data
+
+### First test if the adapters directory has proper content
+mlx_lm.generate --model "Qwen/Qwen2.5-Coder-0.5B-Instruct" \
+            --prompt "Hi" --adapter adapters/
+
+### Then fuse the adapters with base model
+mlx_lm.fuse --model "Qwen/Qwen2.5-Coder-0.5B-Instruct" \
+            --save-path ./fused_model/qwen2.5_coder_fused/ \
+            --adapter-path adapters/
+
+### Finally create the gguf file using the ollama command
+ollama create qwen_math_0.5B -f Modelfile            
