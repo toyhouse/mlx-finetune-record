@@ -2,5 +2,10 @@ models/
 adapters/
 fused_model/
 gguf_models/
+gguf_model/
+
+hf_converted/
+llama.cpp/
+
 
 .venv/
