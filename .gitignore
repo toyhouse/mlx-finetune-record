@@ -3,6 +3,7 @@ adapters/
 fused_model/
 gguf_models/
 gguf_model/
+downloaded_models/
 
 hf_converted/
 llama.cpp/
