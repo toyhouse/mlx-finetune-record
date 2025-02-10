@@ -9,3 +9,5 @@ llama.cpp/
 
 
 .venv/
+
+.DS_Store
