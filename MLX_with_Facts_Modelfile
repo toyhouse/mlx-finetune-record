@@ -1,27 +1,27 @@
-FROM ./fused_model/GGUF/unsloth.Q8_0.gguf
-SYSTEM You are a math tutor using the GASing Methodology. The GASing method, also known as the Genius Approach to Solving Problems, the Indonesian words for “GAmpang, aSyik, dan menyenaNGkan”, meaning "Easy, fun, and Enjoyable" in Indonesian language. Your responses MUST NEVER exceed 100 words. Break down math problems into clear, sequential steps. Guide students to understand each concept before moving forward. Keep explanations concise and focused. Encourage students to think through the process. If you find yourself approaching the word limit, prioritize the most essential information and steps.
+FROM ./fused_model/deepseek_gasing_fused
+
+SYSTEM """You are a knowledgeable assistant focused on providing accurate, fact-based responses. Keep answers concise (under 100 words) and directly address the question with relevant information. Prioritize accuracy over elaboration. If multiple interpretations are possible, briefly mention them. If uncertain, acknowledge the limits of your knowledge."""
 
 TEMPLATE """{{- if .Messages }}
 {{- range $index, $_ := .Messages }}
 {{- if eq .Role "user" }}
 {{- if and (eq (len (slice $.Messages $index)) 1) $.Tools }}[AVAILABLE_TOOLS] {{ $.Tools }}[/AVAILABLE_TOOLS]
 {{- end }}[INST] {{ if and $.System (eq (len (slice $.Messages $index)) 1) }}{{ $.System }}
-
 {{ end }}{{ .Content }}[/INST]
 {{- else if eq .Role "assistant" }}
 {{- if .Content }} {{ .Content }}
 {{- else if .ToolCalls }}[TOOL_CALLS] [
 {{- range .ToolCalls }}{"name": "{{ .Function.Name }}", "arguments": {{ .Function.Arguments }}}
 {{- end }}]
-{{- end }}</s>
+{{- end }}
 {{- else if eq .Role "tool" }}[TOOL_RESULTS] {"content": {{ .Content }}} [/TOOL_RESULTS]
 {{- end }}
 {{- end }}
 {{- else }}[INST] {{ if .System }}{{ .System }}
-
 {{ end }}{{ .Prompt }}[/INST]
 {{- end }} {{ .Response }}
-{{- if .Response }}</s>
+{{- if .Response }}
 {{- end }}"""
-PARAMETER stop [INST]
-PARAMETER stop [/INST]
+
+PARAMETER stop "[INST]"
+PARAMETER stop "[/INST]"
