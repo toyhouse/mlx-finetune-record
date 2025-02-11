@@ -1,6 +1,6 @@
 #!/bin/bash
 
 mlx_lm.fuse \
-    --model "Qwen/Qwen2.5-Coder-0.5B-Instruct" \
-    --save-path ./fused_model/qwen2.5_coder_fused/ \
+    --model "deepseek-ai/deepseek-r1-distill-qwen-1.5b" \
+    --save-path ./fused_model/deepseek-r1_fused/ \
     --adapter-path adapters/

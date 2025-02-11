@@ -59,4 +59,4 @@
 #     --outtype q8_0
 
 echo "Creating Ollama model..."
-ollama create qwen_math_0.5B -f Modelfile
+ollama create gasing_from_deepseek -f Modelfile

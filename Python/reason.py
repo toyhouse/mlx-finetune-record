@@ -15,6 +15,7 @@ DEFAULT_TOP_P = 1.0
 DEFAULT_SEED = 0
 DEFAULT_MAX_TOKENS = 4096
 DEFAULT_MODEL = "deepseek-ai/deepseek-r1-distill-qwen-1.5b"
+# DEFAULT_MODEL = "./fused_model/deepseek-r1_fused"
 
 
 def setup_arg_parser():
