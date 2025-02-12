@@ -4,10 +4,10 @@
 mlx_lm.lora \
     --model "deepseek-ai/deepseek-r1-distill-qwen-1.5b" \
     --train \
-    --data "./jsonl/GASING_converted" \
+    --data "./jsonl/GASING" \
     --fine-tune-type lora \
-    --learning-rate 5e-5 \
-    --iters 200 \
+    --learning-rate 1e-4 \
+    --iters 100 \
     --batch-size 4 \
     --max-seq-length 2048 \
     --steps-per-eval 50 \
