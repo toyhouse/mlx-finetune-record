@@ -8,6 +8,7 @@ downloaded_models/
 hf_converted/
 llama.cpp/
 
+logs/
 
 .venv/
 
