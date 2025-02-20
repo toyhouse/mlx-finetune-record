@@ -3,8 +3,8 @@ set -eo pipefail
 
 # Default values
 MODEL_NAME=""
-# BASE_MODEL="Qwen/Qwen2.5-Coder-0.5B-Instruct"
-BASE_MODEL="deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"
+BASE_MODEL="Qwen/Qwen2.5-Coder-0.5B-Instruct"
+# BASE_MODEL="deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"
 DATA_PATH="data/GASING"
 ADAPTER_PATH=""
 FUSED_PATH=""

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quadratic Function Generator</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        .input-group label {
+            display: inline-block;
+            width: 120px;
+            margin-right: 10px;
+        }
+        input[type="number"] {
+            width: 100px;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .function-display {
+            margin: 20px 0;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        #graphContainer {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: white;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Quadratic Function Generator</h1>
+        <p>Enter coefficients for f(x) = ax² + bx + c</p>
+        
+        <div class="input-group">
+            <label for="coef-a">Coefficient a:</label>
+            <input type="number" id="coef-a" value="1" step="0.1">
+        </div>
+        
+        <div class="input-group">
+            <label for="coef-b">Coefficient b:</label>
+            <input type="number" id="coef-b" value="0" step="0.1">
+        </div>
+        
+        <div class="input-group">
+            <label for="coef-c">Coefficient c:</label>
+            <input type="number" id="coef-c" value="0" step="0.1">
+        </div>
+        
+        <button onclick="generateGraph()">Generate Graph</button>
+        
+        <div class="function-display" id="functionDisplay">
+            f(x) = x²
+        </div>
+        
+        <div id="graphContainer">
+            <canvas id="quadraticGraph"></canvas>
+        </div>
+    </div>
+
+    <script>
+        let chart = null;
+
+        function generatePoints(a, b, c) {
+            const points = [];
+            // Generate points from -10 to 10
+            for (let x = -10; x <= 10; x += 0.1) {
+                points.push({
+                    x: x,
+                    y: a * x * x + b * x + c
+                });
+            }
+            return points;
+        }
+
+        function generateGraph() {
+            const a = parseFloat(document.getElementById('coef-a').value) || 0;
+            const b = parseFloat(document.getElementById('coef-b').value) || 0;
+            const c = parseFloat(document.getElementById('coef-c').value) || 0;
+
+            // Update function display
+            const functionDisplay = document.getElementById('functionDisplay');
+            functionDisplay.textContent = `f(x) = ${a}x² ${b >= 0 ? '+' : ''}${b}x ${c >= 0 ? '+' : ''}${c}`;
+
+            const points = generatePoints(a, b, c);
+
+            if (chart) {
+                chart.destroy();
+            }
+
+            const ctx = document.getElementById('quadraticGraph').getContext('2d');
+            chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        label: 'Quadratic Function',
+                        data: points,
+                        borderColor: 'rgb(75, 192, 192)',
+                        tension: 0.1,
+                        pointRadius: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: {
+                            type: 'linear',
+                            position: 'center',
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            }
+                        },
+                        y: {
+                            type: 'linear',
+                            position: 'center',
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            }
+                        }
+                    },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Quadratic Function Graph'
+                        }
+                    }
+                }
+            });
+        }
+
+        // Generate initial graph
+        generateGraph();
+    </script>
+</body>
+</html>

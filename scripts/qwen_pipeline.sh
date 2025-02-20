@@ -74,7 +74,7 @@ train_model() {
         --iters ${TRAINING_ITERS} \
         --adapter-path "${ADAPTER_PATH}" \
         --save-every 50 \
-        --learning-rate 1e-5 \
+        --learning-rate 1e-4 \
         --steps-per-report 10 \
         | tee "${LOG_DIR}/training_$(date +%Y%m%d_%H%M%S).log"
 }
