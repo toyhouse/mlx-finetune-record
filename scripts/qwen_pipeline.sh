@@ -3,7 +3,8 @@ set -eo pipefail
 
 # Default values
 MODEL_NAME=""
-BASE_MODEL="deepseek-ai/deepseek-r1-distill-qwen-1.5b"
+# BASE_MODEL="deepseek-ai/deepseek-r1-distill-qwen-1.5b"
+BASE_MODEL="Qwen/Qwen2.5-Coder-0.5B-Instruct"
 DATA_PATH="data/math_tutor_dataset.json"
 ADAPTER_PATH=""
 FUSED_PATH=""
@@ -11,6 +12,7 @@ MODE="all"
 VENV_DIR="${VENV_DIR:-.venv}"
 LOG_DIR="${LOG_DIR:-logs}"
 TRAINING_ITERS=20  # Number of training iterations
+
 
 # Print usage
 usage() {

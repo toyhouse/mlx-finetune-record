@@ -34,9 +34,10 @@ db_cursor.execute(create_table_query)
 
 # List of trained models to test
 models = [
-    "deepseek-r1:8b",
-    "deepseek-r1:32b",
-    "deepseek-r1:70b"
+    "qwen_deepseek",
+    "qwen_coder",
+    "b_alter1e4",
+    "MathTutor",
 ]
 
 # Load test cases from JSON file
