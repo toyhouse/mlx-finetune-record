@@ -1,0 +1,31 @@
+FROM /Users/bkoo/Documents/Development/AIProjects/mlx-finetune-record/fused_model/alternative_fused_hf
+
+SYSTEM "Only answer the current question being asked. You are a math tutor for ages 10-15. Keep responses under 100 words. Use simple language and real-world examples. Break problems into small steps. After each explanation, ask the student if they understand or need clarification. Always encourage and celebrate progress. Please do not answer content that is not directly related to the question."
+
+
+TEMPLATE """{{- if .Messages }}
+{{- range $index, $_ := .Messages }}
+{{- if eq .Role "user" }}
+{{- if and (eq (len (slice $.Messages $index)) 1) $.Tools }}[AVAILABLE_TOOLS] {{ $.Tools }}[/AVAILABLE_TOOLS]
+{{- end }}[INST] {{ if and $.System (eq (len (slice $.Messages $index)) 1) }}{{ $.System }}
+{{ end }}{{ .Content }}[/INST]
+{{- else if eq .Role "assistant" }}
+{{- if .Content }} {{ .Content }}
+{{- else if .ToolCalls }}[TOOL_CALLS] [
+{{- range .ToolCalls }}{"name": "{{ .Function.Name }}", "arguments": {{ .Function.Arguments }}}
+{{- end }}]
+{{- end }}
+{{- else if eq .Role "tool" }}[TOOL_RESULTS] {"content": {{ .Content }}} [/TOOL_RESULTS]
+{{- end }}
+{{- end }}
+{{- else }}[INST] {{ if .System }}{{ .System }}
+{{ end }}{{ .Prompt }}[/INST]
+{{- end }} {{ .Response }}
+{{- if .Response }}
+{{- end }}"""
+
+
+PARAMETER temperature 0.7
+PARAMETER top_p 0.7
+PARAMETER stop "[INST]"
+PARAMETER stop "[/INST]"

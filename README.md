@@ -68,7 +68,7 @@ mlx-finetune-record/
    ```bash
    mlx_lm.lora \
        --model "Qwen/Qwen2.5-Coder-0.5B-Instruct" \
-       --train \
+       --train \python
        --data "./jsonl/your_data_directory" \
        --learning-rate 1e-5 \
        --iters 100 \
@@ -262,13 +262,3 @@ mlx_lm.fuse --model "Qwen/Qwen2.5-Coder-0.5B-Instruct" \
 
 ### Finally create the gguf file using the ollama command
 ollama create qwen_math_0.5B -f Modelfile            
-# Qwen Pipeline Usage
-
-```bash
-./scripts/qwen_pipeline.sh "MathTutor-0.5B" "deepseek-ai/deepseek-r1" \
-  "data/tutor_data.json"
-
-# Partial execution examples:
-./scripts/qwen_pipeline.sh "MathTutor-0.5B" --mode train
-./scripts/qwen_pipeline.sh "MathTutor-0.5B" --mode fuse
-```
