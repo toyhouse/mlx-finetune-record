@@ -38,6 +38,7 @@ models = [
     "qwen_coder",
     "b_alter1e4",
     "MathTutor",
+    "s1k_MOST_RECENT"
 ]
 
 # Load test cases from JSON file

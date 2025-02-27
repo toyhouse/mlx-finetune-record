@@ -1,0 +1,4 @@
+name: "Qwen/Qwen2.5-Coder-0.5B-Instruct"
+architecture: "transformer"
+tokenizer: "Qwen/Qwen2.5-Coder-0.5B-Instruct"
+max_sequence_length: 2048

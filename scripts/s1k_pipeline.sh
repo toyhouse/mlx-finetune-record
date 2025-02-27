@@ -11,7 +11,7 @@ FUSED_PATH=""
 MODE="all"
 VENV_DIR="${VENV_DIR:-.venv}"
 LOG_DIR="${LOG_DIR:-logs}"
-TRAINING_ITERS=20
+TRAINING_ITERS=100
 
 # Add explicit path verification
 prepare_data() {
@@ -128,18 +128,20 @@ activate_venv() {
 
 create_ollama_model() {
     # Convert model name to lowercase and replace invalid characters with underscores
-    OLLAMA_MODEL_NAME=$(echo "${MODEL_NAME}" | tr '[:upper:]' '[:lower:]' | tr -c '[:alnum:]_' '_')
+    OLLAMA_MODEL_NAME=$(echo "${MODEL_NAME}_MOST_RECENT")
     echo "Creating Ollama model package..."
     mkdir -p "${MODEL_NAME}"
     cp "${FUSED_PATH}/config.json" "${MODEL_NAME}/config.json"
     cp "${FUSED_PATH}/model.safetensors" "${MODEL_NAME}/model.safetensors"
     
+    echo "FROM ${PWD}/models/${MODEL_NAME}_model/fused"
+
     # Ensure modelfiles directory exists
     mkdir -p modelfiles
     
     # Create Modelfile with absolute paths
     cat > "modelfiles/${MODEL_NAME}_Modelfile" << EOF
-FROM ${PWD}/fused_model/${MODEL_NAME}_fused_hf
+FROM ${PWD}/models/${MODEL_NAME}_model/fused
 
 PARAMETER temperature 0.7
 PARAMETER top_p 0.7

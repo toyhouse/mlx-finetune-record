@@ -1,0 +1,5 @@
+name: "calculator"
+train_data: "./data/calculator/train.jsonl"
+validation_data: "./data/calculator/valid.jsonl"
+format: "jsonl"
+text_field: "text"

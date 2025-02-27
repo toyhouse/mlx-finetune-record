@@ -1,0 +1,8 @@
+name: "lora_default"
+type: "lora"
+num_layers: 4
+learning_rate: 1e-4
+batch_size: 8
+iterations: 20
+fine-tune-type: "full"
+adapter_save_path: "./adapters/{model_name}_{data_name}"

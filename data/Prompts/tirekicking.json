@@ -8,5 +8,7 @@
     "What are the properties of a right triangle?",
     "How do you find the circumference of a circle?",
     "What is the importance of the quadratic formula?",
-    "Can you provide an example of a real-world application of geometry?"
+    "Can you provide an example of a real-world application of geometry?",
+    "Find the ratio of forward-bias to reverse-bias currents when the same voltage 1.5 V is applied in both forward and reverse. Assume room temperature 293 K.",
+    "The set of points $\\\\left(x_{1}, x_{2}, x_{3}, x_{4}\\\\right)$ in $\\\\mathbf{R}^{4}$ such that $x_{1} \\\\geq x_{2} \\\\geq x_{3} \\\\geq x_{4}$ is a cone (or hypercone, if you insist). Into how many regions is this cone sliced by the hyperplanes $x_{i}-x_{j}=1$ for $1 \\\\leq i<j \\\\leq n$ ?"
 ]
