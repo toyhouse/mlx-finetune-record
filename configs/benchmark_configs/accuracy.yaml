@@ -1,0 +1,15 @@
+name: "accuracy_benchmark"
+description: "Benchmark for measuring model accuracy"
+dataset: "./benchmarks/datasets/accuracy_test.jsonl"
+metric: "accuracy"
+batch_size: 32
+max_samples: 1000
+logging:
+  level: "info"
+  file: "./benchmarks/logs/{model_name}_{benchmark_name}_{timestamp}.log"
+output:
+  format: "json"
+  save_path: "./benchmarks/results/{model_name}_{benchmark_name}_{timestamp}.json"
+visualization_config:
+  type: "bar_chart"
+  save_path: "./benchmarks/visualizations/{model_name}_{benchmark_name}_{timestamp}.png"

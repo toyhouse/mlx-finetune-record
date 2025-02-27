@@ -1,0 +1,9 @@
+name: "full_ft_default"
+type: "full_ft"
+learning_rate: 5e-6
+batch_size: 4
+iterations: 500
+gradient_accumulation_steps: 4
+warmup_steps: 50
+save_checkpoint_steps: 100
+checkpoint_path: "./checkpoints/{model_name}_{data_name}"

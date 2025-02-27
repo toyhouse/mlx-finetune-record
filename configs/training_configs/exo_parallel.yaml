@@ -1,0 +1,12 @@
+name: "exo_parallel"
+description: "EXO parallel processing configuration"
+mode: "exo"
+workers: 4
+batch_size: 2
+iterations_per_worker: 50
+total_iterations: 200
+learning_rate: 5e-6
+shared_memory: true
+checkpoint_interval: 10
+checkpoint_path: "./checkpoints/exo_{model_name}_{data_name}"
+log_path: "./logs/exo_{model_name}_{data_name}.log"
