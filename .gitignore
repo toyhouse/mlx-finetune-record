@@ -1,17 +1,35 @@
+# Ignore model weights and adapters
 models/
 adapters/
 fused_model/
-gguf_models/
-gguf_model/
-downloaded_models/
+pretrained_models/
 
-hf_converted/
-llama.cpp/
-
+# Ignore logs and results
 logs/
+benchmarks/results/
+benchmarks/visualizations/
 
+# Ignore Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Ignore environment
 .venv/
+.env
+.python-version
 
+# Ignore OS files
 .DS_Store
+.idea/
+.vscode/
 
-*.db
+# Ignore backup folder
+_backup/
+
+# Large data files
+*.tar.gz
+*.zip
