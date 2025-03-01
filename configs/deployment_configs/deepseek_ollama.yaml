@@ -1,0 +1,10 @@
+name: "deepseek_calculator"
+platform: "ollama"
+model_name: "deepseek_calc"
+temperature: 0.7
+top_p: 0.7
+start: "[INST]"
+stop: "[/INST]"
+system_prompt: "You are a helpful calculator assistant."
+fused_model_path: "./fused_model/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B_calculator"
+modelfile_template: "./templates/Modelfile_Template.txt"

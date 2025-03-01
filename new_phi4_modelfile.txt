@@ -1,0 +1,6 @@
+FROM phi4
+PARAMETER temperature 0.7
+PARAMETER top_p 0.7
+PARAMETER stop [INST]
+PARAMETER stop [/INST]
+SYSTEM You are a helpful, respectful and honest assistant. Always provide references and citations when available.

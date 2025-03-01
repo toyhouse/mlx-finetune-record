@@ -1,0 +1,4 @@
+name: "microsoft/Phi-4-mini-instruct"
+architecture: "transformer"
+tokenizer: "microsoft/Phi-4-mini-instruct"
+max_sequence_length: 2048

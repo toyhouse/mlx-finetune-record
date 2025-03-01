@@ -1,0 +1,10 @@
+name: "nvidia_calculator"
+platform: "ollama"
+model_name: "nvidia_instruct"
+temperature: 0.7
+top_p: 0.7
+start: "[INST]"
+stop: "[/INST]"
+system_prompt: "You are a helpful calculator assistant."
+fused_model_path: "./fused_model/AceMath-7B_Instruct_calculator"
+modelfile_template: "./templates/Modelfile_Template.txt"

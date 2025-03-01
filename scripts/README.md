@@ -2,28 +2,38 @@
 
 This directory contains various scripts for MLX model creation, training, and testing.
 
-## Directory Structure
+For a sample train, fuse, deploy session:
 
-### model_creation/
-Scripts for creating and initializing different models:
-- create_deepseek_for_gasing.sh: Creates DeepSeek model for GASING
-- create_faster_mlx.sh: Creates faster MLX model
-- create_ollama_*.sh: Creates Ollama-based models
+```bash
+python scripts/train_fuse_deploy.py \
+    --model_config configs/model_configs/Qwen_0.5B.yaml \
+    --data_config configs/data_configs/calculator.yaml \
+    --training_config configs/training_configs/lora_config.yaml \
+    --deployment_config configs/deployment_configs/ollama_config.yaml
+```
 
-### training/
-Scripts for model training and fine-tuning:
-- faster_training.sh: Fast training implementation
-- lora_training.sh: LoRA-based training scripts
-- mlx_training_DeepSeek-Qwen.sh: Training script for DeepSeek-Qwen
-- train_GASING.sh: GASING-specific training
+Another example for using a different base model
 
-### conversion/
-Scripts for model conversion and fusion:
-- convert_training_data.py: Converts training data to required format
-- fuse_*.sh: Various model fusion scripts
+```bash
+python scripts/train_fuse_deploy.py \
+    --model_config configs/model_configs/nvidia_acemath.yaml \
+    --data_config configs/data_configs/calculator.yaml \
+    --training_config configs/training_configs/lora_config.yaml \
+    --deployment_config configs/deployment_configs/nvidia_instruct_deploy.yaml
+```
 
-### testing/
-Scripts for testing and running models:
-- run_gasing_mlx.sh: Runs GASING MLX model
-- test_gasing_mlx.sh: Tests GASING MLX model
-- fact_based_mlx.sh: Fact-based testing script
+Another example for using a different base model
+
+```bash
+python scripts/train_fuse_deploy.py \
+    --model_config configs/model_configs/phi4_mini.yaml \
+    --data_config configs/data_configs/calculator.yaml \
+    --training_config configs/training_configs/phi4-mini_lora.yaml \
+    --deployment_config configs/deployment_configs/phi4_ollama.yaml
+```
+
+
+
+```bash
+mlx_lm.lora --model nvidia/AceMath-7B-Instruct --train --data ./data/calculator --learning-rate 1e-4 --iters 20 --fine-tune-type full --adapter-path ./adapters/nvidia/AceMath-7B-Instruct_calculator_20250301_102505
+```

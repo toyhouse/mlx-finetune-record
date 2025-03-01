@@ -1,0 +1,10 @@
+name: "phi4_assistant"
+platform: "ollama"
+model_name: "phi4_assistant"
+temperature: 0.7
+top_p: 0.7
+start: "[INST]"
+stop: "[/INST]"
+system_prompt: "You are a helpful, respectful and honest assistant. Always provide references and citations when available."
+fused_model_path: "./fused_model/Phi-4-mini-instruct_calculator"
+modelfile_template: "./templates/Modelfile_Template.txt"

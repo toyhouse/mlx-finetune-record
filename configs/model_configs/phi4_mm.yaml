@@ -1,0 +1,4 @@
+name: "microsoft/Phi-4-multimodal-instruct-onnx"
+architecture: "transformer"
+tokenizer: "microsoft/Phi-4-multimodal-instruct-onnx"
+max_sequence_length: 2048

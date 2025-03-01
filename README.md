@@ -212,7 +212,7 @@ python scripts/monitor_exo.py \
 The entire process can be run with a single command:
 
 ```bash
-python scripts/train.py \
+python scripts/train_fuse_deploy.py \
     --model_config configs/model_configs/Qwen_0.5B.yaml \
     --data_config configs/data_configs/calculator.yaml \
     --training_config configs/training_configs/lora_config.yaml \
@@ -503,6 +503,17 @@ python scripts/train_fuse_deploy.py \
     --data_config configs/data_configs/calculator.yaml \
     --training_config configs/training_configs/lora_config.yaml \
     --deployment_config configs/deployment_configs/ollama_config.yaml
+```
+
+or 
+
+
+```bash
+python scripts/train_fuse_deploy.py \
+    --model_config configs/model_configs/phi4_mm.yaml \
+    --data_config configs/data_configs/calculator.yaml \
+    --training_config configs/training_configs/lora_config.yaml \
+    --deployment_config configs/deployment_configs/phi4_ollama.yaml
 ```
 
 ### Optional Arguments

@@ -1,0 +1,4 @@
+name: "nvidia/AceMath-7B-Instruct"
+architecture: "transformer"
+tokenizer: "nvidia/AceMath-7B-Instruct"
+max_sequence_length: 4096
