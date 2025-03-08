@@ -1,0 +1,4 @@
+name: "videotranscript"
+train_path: "./data/videotranscript/train.jsonl"
+validation_path: "./data/videotranscript/valid.jsonl"
+test_path: "./data/videotranscript/test.jsonl"
