@@ -1,0 +1,10 @@
+name: "qwen_calculator"
+platform: "ollama"
+model_name: "indo_teacher"
+temperature: 0.7
+top_p: 0.7
+start: "[INST]"
+stop: "[/INST]"
+system_prompt: "You are a helpful calculator assistant."
+fused_model_path: "./fused_model/Qwen1.5-1.8B-Chat_calculator"
+modelfile_template: "./templates/Modelfile_Template.txt"
