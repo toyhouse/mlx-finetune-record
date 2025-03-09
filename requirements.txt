@@ -7,11 +7,15 @@ charset-normalizer==3.4.1
 datasets==3.3.1
 dill==0.3.8
 filelock==3.17.0
+ffmpeg-python==0.2.0
 frozenlist==1.5.0
 fsspec==2024.12.0
 huggingface-hub==0.28.1
 idna==3.10
 Jinja2==3.1.5
+jsonschema==4.21.1
+langchain==0.1.12
+langchain-google-genai==0.0.11
 MarkupSafe==3.0.2
 mlx==0.23.1
 mlx-lm==0.21.5
@@ -26,6 +30,7 @@ propcache==0.2.1
 protobuf==5.29.3
 pyarrow==19.0.1
 python-dateutil==2.9.0.post0
+python-dotenv==1.0.2
 pytz==2025.1
 PyYAML==6.0.2
 regex==2024.11.6
@@ -35,6 +40,7 @@ sentencepiece==0.2.0
 setuptools==75.8.0
 six==1.17.0
 sympy==1.13.1
+tenacity==8.2.3
 tokenizers==0.21.0
 torch==2.6.0
 tqdm==4.67.1
@@ -42,5 +48,6 @@ transformers==4.49.0
 typing_extensions==4.12.2
 tzdata==2025.1
 urllib3==2.3.0
+whisper==1.1.10
 xxhash==3.5.0
 yarl==1.18.3
