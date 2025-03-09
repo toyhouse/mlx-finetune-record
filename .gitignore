@@ -6,6 +6,9 @@ pretrained_models/
 
 # Ignore logs and results
 logs/
+*.log
+failed_transcripts.log
+math_qa_generation.log
 benchmarks/results/
 benchmarks/visualizations/
 
