@@ -13,27 +13,34 @@ from translation.ollama_client import OllamaClient
 
 
 class Translator:
-    """Translator for JSONL files from Indonesian to English."""
+    """Translator for JSONL files between multiple languages."""
     
-    def __init__(self, model: str = config.DEFAULT_MODEL):
+    def __init__(self, model: str = config.DEFAULT_MODEL, source_lang: str = config.DEFAULT_SOURCE_LANGUAGE, 
+                 target_lang: str = config.DEFAULT_TARGET_LANGUAGE):
         """
         Initialize the translator.
         
         Args:
             model: The model to use for translation
+            source_lang: The source language code or 'auto' for auto-detection
+            target_lang: The target language code
         """
         self.model = model
+        self.source_lang = source_lang
+        self.target_lang = target_lang
         self.client = OllamaClient(model=model)
         
     def translate_jsonl_file(self, input_file: str, output_file: str) -> None:
         """
-        Translate a JSONL file from Indonesian to English.
+        Translate a JSONL file between languages.
         
         Args:
             input_file: Path to the input JSONL file
             output_file: Path to the output JSONL file
         """
-        print(f"Translating {input_file} to {output_file}...")
+        target_lang_name = config.SUPPORTED_LANGUAGES.get(self.target_lang, "English")
+        print(f"Translating {input_file} to {target_lang_name}...")
+        print(f"Output file: {output_file}")
         
         # Create output directory if it doesn't exist
         os.makedirs(os.path.dirname(output_file), exist_ok=True)
@@ -44,6 +51,21 @@ class Translator:
         
         total_lines = len(lines)
         translated_lines = []
+        
+        # Detect source language from the first entry if set to auto
+        if self.source_lang == "auto" and lines:
+            try:
+                first_entry = json.loads(lines[0].strip())
+                first_text = first_entry.get('text', '')
+                if first_text:
+                    detected_language = self.client.detect_language(first_text)
+                    detected_code = self.client.get_language_code(detected_language)
+                    print(f"Detected source language: {detected_language} ({detected_code})")
+                    
+                    # Update the source language code for subsequent operations
+                    self.source_lang = detected_code
+            except Exception as e:
+                print(f"Error detecting language: {e}")
         
         for i, line in enumerate(lines):
             print(f"Processing entry {i+1}/{total_lines}...")
@@ -92,8 +114,8 @@ class Translator:
             # Split the text into major sections (system, human, assistant)
             # The format appears to be:
             # System instruction in English
-            # Human: Indonesian content
-            # Assistant: Indonesian content
+            # Human: Content in source language
+            # Assistant: Content in source language
             
             # First, identify the main sections by splitting on double newlines
             sections = []
@@ -136,7 +158,9 @@ class Translator:
             for prefix, content in sections:
                 if prefix:  # This is a Human: or Assistant: section
                     # Translate the entire content as one block
-                    translated_content = self.client.translate(content)
+                    translated_content = self.client.translate(content, 
+                                                             source_lang=self.source_lang, 
+                                                             target_lang=self.target_lang)
                     
                     if translated_content:
                         # Reconstruct with the original prefix
@@ -155,15 +179,25 @@ class Translator:
         return translated_entry
     
     def translate_directory(self, input_dir: str = config.INPUT_DIR, 
-                           output_dir: str = config.OUTPUT_DIR) -> None:
+                           output_dir: str = None) -> None:
         """
         Translate all JSONL files in a directory.
         
         Args:
             input_dir: Path to the input directory
-            output_dir: Path to the output directory
+            output_dir: Path to the output directory (if None, uses config.OUTPUT_DIR with target language code)
         """
         input_path = Path(input_dir)
+        
+        # If output_dir is not specified, use the config with the target language code
+        if output_dir is None:
+            # For Chinese, include the variant (Simplified/Traditional) in the directory name
+            if self.target_lang.startswith("zh-"):
+                lang_variant = "simplified" if self.target_lang == "zh-cn" else "traditional"
+                output_dir = config.OUTPUT_DIR.format(lang_code=f"zh_{lang_variant}")
+            else:
+                output_dir = config.OUTPUT_DIR.format(lang_code=self.target_lang)
+        
         output_path = Path(output_dir)
         
         # Create output directory if it doesn't exist
@@ -176,7 +210,7 @@ class Translator:
             print(f"No JSONL files found in {input_dir}")
             return
         
-        print(f"Found {len(jsonl_files)} JSONL files to translate")
+        print(f"Found {len(jsonl_files)} JSONL files to translate to {config.SUPPORTED_LANGUAGES.get(self.target_lang, 'Unknown')}")
         
         for file in jsonl_files:
             input_file = str(file)

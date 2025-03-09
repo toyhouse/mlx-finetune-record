@@ -17,15 +17,39 @@ AVAILABLE_MODELS = [
 # Default model to use
 DEFAULT_MODEL = "llama3"
 
-# Source and target languages
-SOURCE_LANGUAGE = "Indonesian"
-TARGET_LANGUAGE = "English"
+# Supported languages
+SUPPORTED_LANGUAGES = {
+    "en": "English",
+    "zh-cn": "Simplified Chinese",
+    "zh-tw": "Traditional Chinese",
+    "de": "German",
+    "id": "Indonesian",
+    "ja": "Japanese",
+    "es": "Spanish",
+    "fr": "French",
+    "it": "Italian",
+    "ko": "Korean",
+    "pt": "Portuguese",
+    "ru": "Russian",
+    "ar": "Arabic",
+    "hi": "Hindi",
+    "tr": "Turkish",
+    "vi": "Vietnamese",
+    "nl": "Dutch",
+    "pl": "Polish",
+    "sv": "Swedish",
+    "th": "Thai"
+}
+
+# Default source and target languages
+DEFAULT_SOURCE_LANGUAGE = "auto"  # 'auto' means auto-detect
+DEFAULT_TARGET_LANGUAGE = "en"    # English by default
 
 # Input and output directories
 INPUT_DIR = "../data/videotranscript"
-OUTPUT_DIR = "../data/en_transcription"
+OUTPUT_DIR = "../data/{lang_code}_transcription"  # Format string with language code
 
-# Translation prompt template
+# Translation prompt templates
 TRANSLATION_PROMPT = """
 You are a professional translator from {source_language} to {target_language}.
 Translate the following text from {source_language} to {target_language}.
@@ -39,6 +63,16 @@ Important instructions:
 6. Return only the translated text.
 
 Text to translate:
+{text}
+"""
+
+# Language detection prompt
+LANGUAGE_DETECTION_PROMPT = """
+Identify the language of the following text. Respond with only the language name in English (e.g., 'English', 'Simplified Chinese', 'Traditional Chinese', 'German', 'Indonesian', 'Japanese', etc.).
+If the text is in Chinese, please specify whether it is Simplified Chinese or Traditional Chinese.
+Do not include any additional text, explanations, or punctuation in your response.
+
+Text:
 {text}
 """
 

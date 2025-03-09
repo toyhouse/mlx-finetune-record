@@ -1,14 +1,16 @@
-# Indonesian to English Translation System
+# Multi-Language Translation System
 
-This system translates Indonesian content to English using Ollama LLMs while preserving all metadata in the original files.
+This system translates content between multiple languages using Ollama LLMs while preserving all metadata in the original files.
 
 ## Features
 
-- Translate JSONL files from Indonesian to English
+- Translate JSONL files between multiple languages (English, Simplified Chinese, Traditional Chinese, German, Spanish, French, etc.)
+- Automatic source language detection with specific support for distinguishing between Simplified and Traditional Chinese
 - Preserve all metadata in the original files
 - Support for multiple Ollama models
 - Command-line interface for easy use
 - Configurable translation parameters
+- Dynamic output directory naming based on target language
 
 ## Prerequisites
 
@@ -26,11 +28,13 @@ The translation system is configured in `config.py`. You can modify the followin
 
 - `AVAILABLE_MODELS`: List of available Ollama models
 - `DEFAULT_MODEL`: Default model to use for translation
-- `SOURCE_LANGUAGE`: Source language (default: Indonesian)
-- `TARGET_LANGUAGE`: Target language (default: English)
+- `SUPPORTED_LANGUAGES`: Dictionary of supported language codes and names
+- `DEFAULT_SOURCE_LANGUAGE`: Default source language code (default: 'auto' for automatic detection)
+- `DEFAULT_TARGET_LANGUAGE`: Default target language code (default: 'en' for English)
 - `INPUT_DIR`: Input directory containing JSONL files
-- `OUTPUT_DIR`: Output directory for translated JSONL files
+- `OUTPUT_DIR`: Output directory template for translated JSONL files (uses target language code)
 - `TRANSLATION_PROMPT`: Prompt template for translation
+- `LANGUAGE_DETECTION_PROMPT`: Prompt template for language detection
 - `BATCH_SIZE`: Number of entries to process in one go
 - `REQUEST_TIMEOUT`: Request timeout in seconds
 - `MAX_RETRIES`: Maximum retries for failed requests
@@ -44,31 +48,55 @@ The translation system is configured in `config.py`. You can modify the followin
 python -m translation.cli list-models
 ```
 
+### List Supported Languages
+
+```bash
+python -m translation.cli list-languages
+```
+
+### Detect Language of a Text File
+
+```bash
+python -m translation.cli detect-language /path/to/file.txt
+```
+
 ### Translate a Single File
 
 ```bash
-python -m translation.cli translate-file /path/to/input.jsonl /path/to/output.jsonl --model llama3
+python -m translation.cli translate-file /path/to/input.jsonl /path/to/output.jsonl --model phi4 --source-lang auto --target-lang en
 ```
 
 ### Translate All Files in a Directory
 
 ```bash
-python -m translation.cli translate-dir --input-dir /path/to/input_dir --output-dir /path/to/output_dir --model llama3
+python -m translation.cli translate-dir --input-dir /path/to/input_dir --target-lang zh --model phi4
 ```
 
 ### Default Usage
 
-To translate all files in the default directories with the default model:
+To translate all files in the default directories with the default model (to English):
 
 ```bash
 python -m translation.cli translate-dir
 ```
 
-## Example
+## Examples
 
 ```bash
 # Translate all files in data/videotranscript to data/en_transcription using llama3
 python -m translation.cli translate-dir --model llama3
+
+# Translate files to Simplified Chinese
+python -m translation.cli translate-dir --target-lang zh-cn
+
+# Translate files to Traditional Chinese
+python -m translation.cli translate-dir --target-lang zh-tw
+
+# Translate files from English to German
+python -m translation.cli translate-dir --source-lang en --target-lang de
+
+# Detect language of a file
+python -m translation.cli detect-language data/videotranscript/train.jsonl
 ```
 
 ## Programmatic Usage
@@ -78,8 +106,12 @@ You can also use the translation system programmatically in your Python code:
 ```python
 from translation import Translator
 
-# Initialize the translator with a specific model
-translator = Translator(model="llama3")
+# Initialize the translator with a specific model and languages
+translator = Translator(
+    model="llama3",
+    source_lang="auto",  # Auto-detect source language
+    target_lang="en"     # Translate to English
+)
 
 # Translate a single file
 translator.translate_jsonl_file(
@@ -87,9 +119,19 @@ translator.translate_jsonl_file(
     "data/en_transcription/train.jsonl"
 )
 
-# Translate all files in a directory
+# Translate all files in a directory (uses target_lang to create output directory)
 translator.translate_directory(
-    "data/videotranscript", 
-    "data/en_transcription"
+    "data/videotranscript"
+    # Output directory will be automatically created based on target language
 )
+
+# Translate to Simplified Chinese
+translator = Translator(model="llama3", target_lang="zh-cn")
+translator.translate_directory("data/videotranscript")
+# Output will be in data/zh_simplified_transcription
+
+# Translate to Traditional Chinese
+translator = Translator(model="llama3", target_lang="zh-tw")
+translator.translate_directory("data/videotranscript")
+# Output will be in data/zh_traditional_transcription
 ```
