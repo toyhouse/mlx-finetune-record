@@ -33,3 +33,4 @@ _backup/
 # Large data files
 *.tar.gz
 *.zip
+qwen_model

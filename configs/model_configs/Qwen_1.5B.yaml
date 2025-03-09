@@ -1,0 +1,4 @@
+name: "./qwen_model"
+architecture: "transformer"
+tokenizer: "./qwen_model"
+max_sequence_length: 2048

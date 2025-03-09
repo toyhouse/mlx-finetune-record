@@ -1,0 +1,4 @@
+name: "Qwen/Qwen1.5-7B-Chat"
+architecture: "transformer"
+tokenizer: "Qwen/Qwen1.5-7B-Chat"
+max_sequence_length: 4096
