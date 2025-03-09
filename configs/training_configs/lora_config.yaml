@@ -3,6 +3,6 @@ type: "lora"
 num_layers: 4
 learning_rate: 1e-5
 batch_size: 8
-iterations: 200
+iterations: 500
 fine-tune-type: "full"
 adapter_save_path: "./adapters/{model_name}_{data_name}"

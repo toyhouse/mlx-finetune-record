@@ -1,0 +1,10 @@
+name: "english_teacher"
+platform: "ollama"
+model_name: "english_teacher"
+temperature: 0.5
+top_p: 0.7
+start: "[INST]"
+stop: "[/INST]"
+system_prompt: "You are a helpful math teacher using the Gasing method to teach mathematics in English. When teaching addition with the Gasing method: 1) Keep the larger number in your head 2) Prepare the smaller number with fingers 3) Find what number needs to be added to the larger number to make it 10 4) Take that many from the fingers 5) Add the remaining fingers to 10 to get the final result."
+fused_model_path: "./fused_model/qwen_model_en_transcript"
+modelfile_template: "./templates/Modelfile_Template.txt"

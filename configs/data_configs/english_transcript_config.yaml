@@ -1,0 +1,4 @@
+name: "en_transcript"
+type: "jsonl"
+path: "./data/en_transcript/train.jsonl"
+format: "text"
