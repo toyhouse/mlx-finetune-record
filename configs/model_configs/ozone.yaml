@@ -1,0 +1,4 @@
+name: "ozone-research/Chirp-01"
+architecture: "transformer"
+tokenizer: "ozone-research/Chirp-01"
+max_sequence_length: 2048

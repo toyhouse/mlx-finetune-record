@@ -1,0 +1,110 @@
+[
+    {
+      "problem": "Jimmy has 3 apples. Sarah gives him 2 more apples. How many apples does Jimmy have now?",
+      "answer": "5",
+      "grade": 1,
+      "category": "addition"
+    },
+    {
+      "problem": "There are 8 birds on a tree. 3 birds fly away. How many birds are left on the tree?",
+      "answer": "5",
+      "grade": 1, 
+      "category": "subtraction"
+    },
+    {
+      "problem": "Lisa has 4 bags of marbles. Each bag has 3 marbles. How many marbles does Lisa have in total?",
+      "answer": "12",
+      "grade": 2,
+      "category": "multiplication"
+    },
+    {
+      "problem": "Mom made 12 cookies. She shared them equally among 3 friends. How many cookies did each friend get?",
+      "answer": "4",
+      "grade": 2,
+      "category": "division"
+    },
+    {
+      "problem": "What is half of 8?",
+      "answer": "4",
+      "grade": 2,
+      "category": "fractions"
+    },
+    {
+      "problem": "Sam had $5. He bought a toy car for $2 and a candy for $1. How much money does Sam have left?",
+      "answer": "$2",
+      "grade": 2,
+      "category": "word_problems"
+    },
+    {
+      "problem": "What is 347 + 286?",
+      "answer": "633",
+      "grade": 3,
+      "category": "addition"
+    },
+    {
+      "problem": "What is 542 - 159?",
+      "answer": "383",
+      "grade": 3,
+      "category": "subtraction"
+    },
+    {
+      "problem": "If one box holds 12 crayons, how many crayons will be in 7 boxes?",
+      "answer": "84",
+      "grade": 3,
+      "category": "multiplication"
+    },
+    {
+      "problem": "A class of 24 students is divided into 6 equal groups. How many students are in each group?",
+      "answer": "4",
+      "grade": 3,
+      "category": "division"
+    },
+    {
+      "problem": "What is 2/3 of 9?",
+      "answer": "6",
+      "grade": 4,
+      "category": "fractions"
+    },
+    {
+      "problem": "Emma is saving money for a bike that costs $120. She has saved $75 so far. How much more money does she need to save?",
+      "answer": "$45",
+      "grade": 4,
+      "category": "word_problems"
+    },
+    {
+      "problem": "What is 1,245 + 3,867?",
+      "answer": "5,112",
+      "grade": 5,
+      "category": "addition"
+    },
+    {
+      "problem": "What is 5,000 - 1,456?",
+      "answer": "3,544",
+      "grade": 5,
+      "category": "subtraction"
+    },
+    {
+      "problem": "What is 24 × 16?",
+      "answer": "384",
+      "grade": 5,
+      "category": "multiplication"
+    },
+    {
+      "problem": "If 144 stickers are divided equally among 12 children, how many stickers does each child get?",
+      "answer": "12",
+      "grade": 5,
+      "category": "division"
+    },
+    {
+      "problem": "What is 3/4 + 2/5?",
+      "answer": "23/20",
+      "grade": 5,
+      "category": "fractions"
+    },
+    {
+      "problem": "A recipe calls for 3/4 cup of flour. If you want to make 5 batches, how much flour do you need?",
+      "answer": "3 3/4 cups",
+      "grade": 5,
+      "category": "word_problems"
+    }
+  ]

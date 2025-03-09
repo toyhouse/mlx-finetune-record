@@ -219,6 +219,14 @@ python scripts/train_fuse_deploy.py \
     --deployment_config configs/deployment_configs/ollama_config.yaml
 ```
 
+```bash
+python scripts/train_fuse_deploy.py \
+    --model_config configs/model_configs/ozone.yaml \
+    --data_config configs/data_configs/calculator.yaml \
+    --training_config configs/training_configs/lora_config.yaml \
+    --deployment_config configs/deployment_configs/ozone_ollama.yaml
+```
+
 This will:
 1. Load the specified model
 2. Process the data according to the data configuration

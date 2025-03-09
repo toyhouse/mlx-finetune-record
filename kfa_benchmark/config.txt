@@ -1,0 +1,8 @@
+# List of models to test (one per line)
+# Lines starting with # are ignored
+
+llama3
+qwq
+phi4
+MathTutor
+s1k_init
