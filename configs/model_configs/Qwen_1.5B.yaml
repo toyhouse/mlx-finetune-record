@@ -1,4 +1,4 @@
-name: "./qwen_model"
+name: "Qwen/Qwen1.5-1.8B"
 architecture: "transformer"
-tokenizer: "./qwen_model"
+tokenizer: "Qwen/Qwen1.5-1.8B"
 max_sequence_length: 2048

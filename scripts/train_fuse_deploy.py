@@ -1,8 +1,17 @@
+import os
+import json
+from datetime import datetime
+import ollama
+from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain.prompts import ChatPromptTemplate
+from dotenv import load_dotenv
+import subprocess
+import sys
+import traceback
+import yaml
+import tempfile
 import argparse
 import subprocess
-import yaml
-import os
-import tempfile
 import sys
 from datetime import datetime
 
@@ -10,6 +19,161 @@ def load_yaml_config(file_path):
     """Load YAML configuration from a file."""
     with open(file_path, 'r') as file:
         return yaml.safe_load(file)
+
+def test_model_math_ability(model_name: str, output_path: str):
+    """
+    Test the math ability of a trained Ollama model with pure equations
+    
+    :param model_name: Name of the Ollama model to test
+    :param output_path: Path to save the markdown report
+    """
+    print("\n" + "="*50)
+    print("STEP 4: TESTING MODEL MATH ABILITY")
+    print("="*50)
+    
+    # Load API key from environment
+    load_dotenv()
+    
+    # Initialize Gemini with the provided API key
+    try:
+        gemini = ChatGoogleGenerativeAI(
+            model="gemini-1.5-pro",
+            temperature=0.2,
+            google_api_key=os.getenv("GOOGLE_API_KEY")
+        )
+    except Exception as gemini_init_error:
+        print(f"Warning: Could not initialize Gemini API: {gemini_init_error}")
+        gemini = None
+
+    # Pure equation questions
+    math_questions = [
+        "7 + 9",
+        "42 + 58",
+        "23 + 45 + 32",
+        "7 + 5"  # One-digit addition problem
+    ]
+    
+    # Prepare markdown content
+    current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    markdown_content = f"# Math Ability Test: {model_name}\n\n"
+    markdown_content += f"**Test Timestamp:** {current_time}\n\n"
+    markdown_content += "## Addition Problem Responses\n\n"
+    
+    # Verify Ollama model exists and is running
+    try:
+        import subprocess
+        
+        # Check if Ollama service is running
+        print("Checking Ollama service...")
+        ollama_ps = subprocess.run(['pgrep', 'ollama'], capture_output=True, text=True)
+        if ollama_ps.returncode != 0:
+            print("Ollama service is not running. Attempting to start...")
+            subprocess.Popen(['ollama', 'serve'], start_new_session=True)
+            import time
+            time.sleep(5)  # Wait for service to start
+        
+        # List available models
+        print("Checking available Ollama models...")
+        models_result = subprocess.run(['ollama', 'list'], capture_output=True, text=True)
+        print(models_result.stdout)
+        
+        # Verify specific model exists
+        if model_name not in models_result.stdout:
+            print(f"Error: Model '{model_name}' not found in Ollama models.")
+            markdown_content += f"**ERROR:** Model '{model_name}' not found in Ollama models.\n"
+            
+            # Write markdown to file
+            os.makedirs(os.path.dirname(output_path), exist_ok=True)
+            with open(output_path, 'w', encoding='utf-8') as f:
+                f.write(markdown_content)
+            
+            return
+    except Exception as startup_error:
+        print(f"Error checking Ollama service: {startup_error}")
+        markdown_content += f"**ERROR:** Failed to check Ollama service: {startup_error}\n"
+        
+        # Write markdown to file
+        os.makedirs(os.path.dirname(output_path), exist_ok=True)
+        with open(output_path, 'w', encoding='utf-8') as f:
+            f.write(markdown_content)
+        
+        return
+    
+    # Test each math question
+    for idx, question in enumerate(math_questions, 1):
+        try:
+            print(f"Sending question {idx}: {question}")
+            
+            # Generate response from the model
+            response = ollama.chat(
+                model=model_name,
+                messages=[
+                    {
+                        'role': 'system', 
+                        'content': 'Solve the math equation directly and precisely.'
+                    },
+                    {
+                        'role': 'user', 
+                        'content': question
+                    }
+                ]
+            )
+            
+            # Extract model's response
+            model_response = response['message']['content']
+            print(f"Model response: {model_response}")
+            
+            # Evaluate response with Gemini if available
+            if gemini:
+                try:
+                    evaluation_prompt = ChatPromptTemplate.from_template("""
+                    Evaluate the mathematical solution to the problem: {question}
+                    
+                    Model's Solution: {model_response}
+                    
+                    Provide a detailed evaluation focusing on:
+                    1. Correctness of the solution
+                    2. Clarity of explanation
+                    3. Mathematical reasoning
+                    
+                    Give a narrative assessment of the solution's strengths and areas for improvement.
+                    """)
+                    
+                    evaluation_chain = evaluation_prompt | gemini
+                    evaluation = evaluation_chain.invoke({
+                        'question': question,
+                        'model_response': model_response
+                    })
+                    
+                    # Add to markdown
+                    markdown_content += f"### Problem {idx}: {question}\n\n"
+                    markdown_content += f"**Model's Solution:**\n```\n{model_response}\n```\n\n"
+                    markdown_content += f"**Evaluation:**\n{evaluation.content}\n\n"
+                except Exception as eval_error:
+                    print(f"Warning: Gemini evaluation failed for question {question}: {eval_error}")
+                    markdown_content += f"### Problem {idx}: {question}\n\n"
+                    markdown_content += f"**Model's Solution:**\n```\n{model_response}\n```\n\n"
+                    markdown_content += f"**Evaluation:** *Gemini evaluation unavailable*\n\n"
+            else:
+                # If Gemini is not available, just add the model's response
+                markdown_content += f"### Problem {idx}: {question}\n\n"
+                markdown_content += f"**Model's Solution:**\n```\n{model_response}\n```\n\n"
+                markdown_content += f"**Evaluation:** *Gemini evaluation unavailable*\n\n"
+        
+        except Exception as e:
+            error_msg = f"Error testing question {question}: {str(e)}"
+            print(error_msg)
+            traceback.print_exc()
+            
+            markdown_content += f"### Problem {idx}: Error\n\n"
+            markdown_content += f"**Error:** {error_msg}\n\n"
+    
+    # Write markdown to file
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    with open(output_path, 'w', encoding='utf-8') as f:
+        f.write(markdown_content)
+    
+    print(f"Math ability test report saved to {output_path}")
 
 def train_model(model_config_path, data_config_path, training_config_path, adapter_path=None):
     """Train the model using mlx_lm.lora."""
@@ -177,6 +341,8 @@ def create_ollama_model(fused_model_path, deployment_config_path):
         else:
             print(f"Stdout: {result.stdout}")
             print(f"Ollama model '{model_name}' created successfully!")
+    
+    return model_name
 
 def main():
     parser = argparse.ArgumentParser(description='Train, fuse, and deploy a model to Ollama.')
@@ -189,6 +355,7 @@ def main():
     parser.add_argument('--adapter_path', type=str, help='Path to existing adapter weights (required if skip_train is True).')
     parser.add_argument('--fused_model_path', type=str, help='Path to existing fused model (required if skip_fuse is True).')
     parser.add_argument('--output_path', type=str, help='Path to save the fused model. If not provided, a default path will be used.')
+    parser.add_argument('--test_output', type=str, help='Optional path to save test results.')
     
     args = parser.parse_args()
     
@@ -224,7 +391,14 @@ def main():
         print(f"Skipping fusion, using existing fused model: {fused_model_path}")
     
     # Step 3: Create the Ollama model
-    create_ollama_model(fused_model_path, args.deployment_config)
+    model_name = create_ollama_model(fused_model_path, args.deployment_config)
+    
+    # Step 4: Test the model (optional)
+    if args.test_output:
+        test_model_math_ability(
+            model_name, 
+            args.test_output
+        )
     
     print("\n" + "="*50)
     print("ALL STEPS COMPLETED SUCCESSFULLY!")
