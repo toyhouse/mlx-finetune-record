@@ -5,6 +5,7 @@ import os
 import tempfile
 import sys
 from datetime import datetime
+import multiprocessing
 
 def load_json_config(file_path):
     """Load JSON configuration from a file."""
@@ -51,7 +52,7 @@ def train_model(config):
     
     if result.returncode != 0:
         print(f"Error during training: {result.stderr}")
-        sys.exit(1)
+        return None
     else:
         print(f"Training completed successfully!")
         print(f"Adapter saved to: {adapter_path}")
@@ -93,7 +94,7 @@ def fuse_model(config, adapter_path):
     
     if result.returncode != 0:
         print(f"Error during fusion: {result.stderr}")
-        sys.exit(1)
+        return None
     else:
         print(f"Fusion completed successfully!")
         print(f"Fused model saved to: {output_path}")
@@ -110,14 +111,15 @@ def create_ollama_model(config, fused_model_path):
     fused_model_path = os.path.abspath(fused_model_path)
     if not os.path.exists(fused_model_path):
         print(f"Error: Fused model path '{fused_model_path}' does not exist.")
-        sys.exit(1)
+        return False
     
     # Extract deployment configuration
     deployment_config = config.get('deployment', {})
     
     # Verify that the platform is 'ollama'
     if deployment_config.get('platform', '').lower() != 'ollama':
-        raise ValueError(f"Expected platform 'ollama', but got '{deployment_config.get('platform')}'")
+        print(f"Skipping Ollama deployment for non-Ollama platform")
+        return False
     
     # Extract parameters from deployment config
     model_name = deployment_config.get('model_name')
@@ -178,46 +180,74 @@ def create_ollama_model(config, fused_model_path):
         if result.returncode != 0:
             print(f"Error: Failed to create Ollama model. Exit code: {result.returncode}")
             print(f"Error output: {result.stderr}")
-            sys.exit(1)
+            return False
         else:
             print(f"Stdout: {result.stdout}")
             print(f"Ollama model '{model_name}' created successfully!")
+            return True
 
-def main():
-    parser = argparse.ArgumentParser(description='Train, fuse, and deploy a model to Ollama using a JSON configuration.')
-    parser.add_argument('--config', type=str, required=True, help='Path to the JSON configuration file.')
-    parser.add_argument('--skip_train', action='store_true', help='Skip the training step and use an existing adapter.')
-    parser.add_argument('--skip_fuse', action='store_true', help='Skip the fusion step and use an existing fused model.')
-    parser.add_argument('--adapter_path', type=str, help='Path to existing adapter weights (required if skip_train is True).')
-    parser.add_argument('--fused_model_path', type=str, help='Path to existing fused model (required if skip_fuse is True).')
-    
-    args = parser.parse_args()
-    
-    # Load the configuration
-    config = load_json_config(args.config)
-    
+def process_single_config(config, skip_train=False, skip_fuse=False, adapter_path=None, fused_model_path=None):
+    """Process a single configuration file."""
     # Step 1: Train the model (unless skipped)
-    adapter_path = args.adapter_path
-    if not args.skip_train:
+    if not skip_train:
         adapter_path = train_model(config)
+        if adapter_path is None:
+            print(f"Training failed for configuration: {config.get('model', {}).get('name', 'Unknown')}")
+            return False
     else:
         if not adapter_path:
             print("Error: --adapter_path must be provided when --skip_train is used.")
-            sys.exit(1)
-        print(f"Skipping training, using existing adapter: {adapter_path}")
+            return False
     
     # Step 2: Fuse the model (unless skipped)
-    fused_model_path = args.fused_model_path
-    if not args.skip_fuse:
+    if not skip_fuse:
         fused_model_path = fuse_model(config, adapter_path)
+        if fused_model_path is None:
+            print(f"Fusion failed for configuration: {config.get('model', {}).get('name', 'Unknown')}")
+            return False
     else:
         if not fused_model_path:
             print("Error: --fused_model_path must be provided when --skip_fuse is used.")
-            sys.exit(1)
-        print(f"Skipping fusion, using existing fused model: {fused_model_path}")
+            return False
     
     # Step 3: Create the Ollama model
     create_ollama_model(config, fused_model_path)
+    
+    return True
+
+def main():
+    parser = argparse.ArgumentParser(description='Train, fuse, and deploy multiple models using JSON configurations.')
+    parser.add_argument('--configs', type=str, nargs='+', required=True, help='Paths to JSON configuration files.')
+    parser.add_argument('--skip_train', action='store_true', help='Skip the training step and use existing adapters.')
+    parser.add_argument('--skip_fuse', action='store_true', help='Skip the fusion step and use existing fused models.')
+    parser.add_argument('--parallel', action='store_true', help='Run training in parallel.')
+    
+    args = parser.parse_args()
+    
+    # Load configurations
+    configs = [load_json_config(config_path) for config_path in args.configs]
+    
+    # Determine whether to run in parallel or sequentially
+    if args.parallel:
+        # Use multiprocessing to train models in parallel
+        with multiprocessing.Pool() as pool:
+            # Prepare arguments for each configuration
+            pool_args = [(config, args.skip_train, args.skip_fuse, None, None) for config in configs]
+            
+            # Run training in parallel
+            results = pool.starmap(process_single_config, pool_args)
+        
+        # Check if all configurations were processed successfully
+        if not all(results):
+            print("Some configurations failed to process.")
+            sys.exit(1)
+    else:
+        # Process configurations sequentially
+        for config in configs:
+            success = process_single_config(config, args.skip_train, args.skip_fuse)
+            if not success:
+                print(f"Failed to process configuration: {config.get('model', {}).get('name', 'Unknown')}")
+                sys.exit(1)
     
     print("\n" + "="*50)
     print("ALL STEPS COMPLETED SUCCESSFULLY!")

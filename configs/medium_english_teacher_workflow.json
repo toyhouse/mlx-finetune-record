@@ -1,0 +1,29 @@
+{
+    "model": {
+        "name": "Qwen/Qwen1.5-4B",
+        "type": "transformer"
+    },
+    "data": {
+        "name": "en_transcript",
+        "path": "/Users/Henrykoo/Documents/mlx-finetune-record/data/en_transcript"
+    },
+    "training": {
+        "learning_rate": 5e-5,
+        "iterations": 150,
+        "fine-tune-type": "lora",
+        "adapter_path": "/Users/Henrykoo/Documents/mlx-finetune-record/adapters/{model_name}_{data_name}"
+    },
+    "fuse": {
+        "output_path": "/Users/Henrykoo/Documents/mlx-finetune-record/fused_model/medium_english_teacher"
+    },
+    "deployment": {
+        "platform": "ollama",
+        "model_name": "medium_english_teacher",
+        "temperature": 0.6,
+        "top_p": 0.8,
+        "start": "",
+        "stop": "",
+        "system_prompt": "You are a knowledgeable and supportive English language teacher who provides detailed explanations and helps students develop advanced communication skills.",
+        "modelfile_template": "/Users/Henrykoo/Documents/mlx-finetune-record/configs/deployment_configs/ollama_modelfile_template"
+    }
+}
