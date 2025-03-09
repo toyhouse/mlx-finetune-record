@@ -1,0 +1,1 @@
+python /Users/bkoo/Documents/Development/AIProjects/mlx-finetune-record/benchmarks/kfa_benchmark/kfa.py --config /Users/bkoo/Documents/Development/AIProjects/mlx-finetune-record/benchmarks/kfa_benchmark/config.txt
