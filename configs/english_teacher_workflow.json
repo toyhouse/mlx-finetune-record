@@ -1,0 +1,29 @@
+{
+    "model": {
+        "name": "Qwen/Qwen2-7B-Instruct",
+        "type": "transformer"
+    },
+    "data": {
+        "name": "videotranscript",
+        "path": "/Users/Henrykoo/Documents/mlx-finetune-record/data/videotranscript"
+    },
+    "training": {
+        "learning_rate": 1e-5,
+        "iterations": 200,
+        "fine-tune-type": "lora",
+        "adapter_path": "/Users/Henrykoo/Documents/mlx-finetune-record/adapters/{model_name}_{data_name}"
+    },
+    "fuse": {
+        "output_path": "/Users/Henrykoo/Documents/mlx-finetune-record/fused_model/qwen_videotranscript"
+    },
+    "deployment": {
+        "platform": "ollama",
+        "model_name": "english_teacher",
+        "temperature": 0.7,
+        "top_p": 0.7,
+        "start": "",
+        "stop": "",
+        "system_prompt": "You are an expert English language teacher who helps students improve their language skills through interactive and engaging conversations.",
+        "modelfile_template": "/Users/Henrykoo/Documents/mlx-finetune-record/configs/deployment_configs/ollama_modelfile_template"
+    }
+}
