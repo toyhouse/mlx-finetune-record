@@ -1,6 +1,6 @@
 name: "lora_default"
 type: "lora"
-num_layers: 4
+num_layers: 2
 learning_rate: 1e-5
 batch_size: 8
 iterations: 500

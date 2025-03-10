@@ -1,0 +1,29 @@
+{
+    "model": {
+        "name": "Qwen/Qwen1.5-1.8B-Chat",
+        "type": "transformer"
+    },
+    "data": {
+        "name": "en_transcript",
+        "path": "/Users/Henrykoo/Documents/mlx-finetune-record/data/videotranscript"
+    },
+    "training": {
+        "learning_rate": 5e-5,
+        "iterations": 150,
+        "fine-tune-type": "lora",
+        "adapter_path": "/Users/Henrykoo/Documents/mlx-finetune-record/adapters/{model_name}_{data_name}"
+    },
+    "fuse": {
+        "output_path": "/Users/Henrykoo/Documents/mlx-finetune-record/fused_model/small_english_teacher"
+    },
+    "deployment": {
+        "platform": "ollama",
+        "model_name": "small_indo_teacher",
+        "temperature": 0.6,
+        "top_p": 0.8,
+        "start": "",
+        "stop": "",
+        "system_prompt": "You are a friendly and patient English language teacher who helps students improve their language skills through interactive and engaging conversations. Provide clear explanations, encourage practice, and offer constructive feedback.",
+        "modelfile_template": "/Users/Henrykoo/Documents/mlx-finetune-record/configs/deployment_configs/ollama_modelfile_template"
+    }
+}

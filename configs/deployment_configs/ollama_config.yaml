@@ -1,6 +1,6 @@
-name: "qwen_calculator"
+name: "0.5indo_teacher"
 platform: "ollama"
-model_name: "qwen_calc"
+model_name: "0.5indo_teacher"
 temperature: 0.7
 top_p: 0.7
 start: "[INST]"

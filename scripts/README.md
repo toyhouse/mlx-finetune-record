@@ -18,7 +18,7 @@ python scripts/train_fuse_deploy.py \
 ```bash
 python scripts/train_fuse_deploy.py \
     --model_config configs/model_configs/Qwen_0.5B.yaml \
-    --data_config configs/data_configs/calculator.yaml \
+    --data_config configs/data_configs/videotranscript_config.yaml \
     --training_config configs/training_configs/lora_config.yaml \
     --deployment_config configs/deployment_configs/ollama_config.yaml \
     --test_output ./results/qwen_0.5B_test_results.md
@@ -43,6 +43,13 @@ python scripts/train_fuse_deploy.py \
     --deployment_config configs/deployment_configs/phi4_ollama.yaml \
     --test_output ./results/phi4_mini_test_results.md
 ```
+
+python scripts/train_fuse_deploy.py \
+    --model_config configs/model_configs/phi4_mini.yaml \
+    --data_config configs/data_configs/videotranscript_config.yaml \
+    --training_config configs/training_configs/phi4-mini_lora.yaml \
+    --deployment_config configs/deployment_configs/phi4_ollama.yaml \
+    --test_output ./results/phi4_mini_test_results.md
 
 ### Optional Testing
 To include model testing after training, add the `--test_output` parameter:

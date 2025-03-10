@@ -37,3 +37,4 @@ _backup/
 *.tar.gz
 *.zip
 qwen_model
+huggingface

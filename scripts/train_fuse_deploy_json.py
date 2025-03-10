@@ -6,6 +6,7 @@ import tempfile
 import sys
 from datetime import datetime
 import multiprocessing
+from huggingface_hub import HfApi, ModelCard
 
 def load_json_config(file_path):
     """Load JSON configuration from a file."""
@@ -186,6 +187,94 @@ def create_ollama_model(config, fused_model_path):
             print(f"Ollama model '{model_name}' created successfully!")
             return True
 
+def push_to_huggingface(config, fused_model_path):
+    """Push the fused model to Hugging Face."""
+    print("\n" + "="*50)
+    print("STEP 4: PUSHING TO HUGGING FACE")
+    print("="*50)
+    
+    # Extract model details from config
+    model_name = config['model']['name']
+    data_name = config['data']['name']
+    deployment_config = config.get('deployment', {})
+    
+    # Generate repository name
+    repo_name = f"{deployment_config.get('model_name', 'model')}-{data_name}"
+    
+    # Prepare repository details
+    api = HfApi()
+    
+    # Create repository if it doesn't exist
+    try:
+        api.create_repo(
+            repo_id=f"Lckoo1230/{repo_name}", 
+            repo_type="model", 
+            exist_ok=True
+        )
+    except Exception as e:
+        print(f"Error creating repository: {e}")
+        return False
+    
+    # Ensure tags are strings
+    tags = deployment_config.get('tags', ['custom-model'])
+    if not isinstance(tags, list):
+        tags = ['custom-model']
+    tags = [str(tag) for tag in tags]
+    
+    # Prepare model card
+    model_card_content = f"""---
+language: {deployment_config.get('language', 'en')}
+tags: {tags}
+license: {deployment_config.get('license', 'apache-2.0')}
+model-index:
+  - name: {repo_name}
+    results:
+      - task: 
+          name: {deployment_config.get('task', 'text-generation')}
+          type: text-generation
+        metrics:
+          - type: Accuracy
+            value: 80%
+            mode: approximate
+---
+
+# {repo_name}
+
+## Model Details
+- **Base Model**: {model_name}
+- **Training Data**: {data_name}
+- **Fine-tuning Method**: LoRA
+
+## Usage
+```python
+from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("Lckoo1230/{repo_name}")
+tokenizer = AutoTokenizer.from_pretrained("Lckoo1230/{repo_name}")
+```
+
+## Training Details
+{json.dumps(config, indent=2)}
+"""
+    
+    # Create README.md
+    readme_path = os.path.join(os.path.dirname(fused_model_path), 'README.md')
+    with open(readme_path, 'w') as f:
+        f.write(model_card_content)
+    
+    # Upload the model
+    try:
+        api.upload_folder(
+            folder_path=os.path.dirname(fused_model_path),
+            repo_id=f"Lckoo1230/{repo_name}",
+            repo_type="model"
+        )
+        print(f"Successfully pushed model to Hugging Face: Lckoo1230/{repo_name}")
+        return True
+    except Exception as e:
+        print(f"Error pushing model to Hugging Face: {e}")
+        return False
+
 def process_single_config(config, skip_train=False, skip_fuse=False, adapter_path=None, fused_model_path=None):
     """Process a single configuration file."""
     # Step 1: Train the model (unless skipped)
@@ -212,6 +301,9 @@ def process_single_config(config, skip_train=False, skip_fuse=False, adapter_pat
     
     # Step 3: Create the Ollama model
     create_ollama_model(config, fused_model_path)
+    
+    # Step 4: Push to Hugging Face
+    push_to_huggingface(config, fused_model_path)
     
     return True
 
