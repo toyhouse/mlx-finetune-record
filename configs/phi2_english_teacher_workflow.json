@@ -1,0 +1,33 @@
+{
+    "model": {
+        "name": "/Users/Henrykoo/Documents/mlx-finetune-record/models/Phi-2",
+        "type": "transformer"
+    },
+    "data": {
+        "name": "english_teaching_transcripts",
+        "path": "/Users/Henrykoo/Documents/mlx-finetune-record/data/en_transcript"
+    },
+    "training": {
+        "learning_rate": 1e-4,
+        "iterations": 50,
+        "fine-tune-type": "lora",
+        "adapter_path": "/Users/Henrykoo/Documents/mlx-finetune-record/adapters/phi2_english_teacher_{data_name}",
+        "lora_r": 8,
+        "lora_alpha": 16
+    },
+    "fuse": {
+        "output_path": "/Users/Henrykoo/Documents/mlx-finetune-record/fused_model/phi2_english_teacher"
+    },
+    "deployment": {
+        "platform": "ollama",
+        "model_name": "phi2_english_teacher",
+        "temperature": 0.6,
+        "top_p": 0.8,
+        "system_prompt": "You are an English language teacher. Provide clear, concise explanations about language learning.",
+        "modelfile_template": "/Users/Henrykoo/Documents/mlx-finetune-record/configs/deployment_configs/ollama_modelfile_template",
+        "tags": ["education", "english-teacher"],
+        "language": "en",
+        "task": "text-generation",
+        "license": "mit"
+    }
+}
