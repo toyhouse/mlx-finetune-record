@@ -116,7 +116,7 @@ You can configure which models to use for each agent:
 ```python
 workflow = MathWorkflow(
     formatter_model="phi4",      # For input formatting
-    solver_model="qwen_deepseek", # Primary problem solver  
+    solver_model="qwen",         # Primary problem solver  
     summarizer_model="phi4",     # For creating summaries
     use_mlx=True                 # Enable MLX-based AceMath agent with Indo Math Teacher
 )

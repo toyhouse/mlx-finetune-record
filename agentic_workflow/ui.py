@@ -43,7 +43,7 @@ def display_models_table() -> None:
     
     model_table.add_row("phi4", "Microsoft's phi-4 is a compact yet powerful instruction model")
     model_table.add_row("gemma", "Google's Gemma is a lightweight LLM for various tasks")
-    model_table.add_row("qwen_deepseek", "Qwen-Deepseek is optimized for complex reasoning tasks")
+    model_table.add_row("qwen", "Qwen is a powerful language model for general reasoning")
     model_table.add_row("llama3", "Meta's Llama 3 is a versatile general-purpose model")
     model_table.add_row("mistral", "Mistral AI's model excels at instruction following")
     
@@ -60,7 +60,7 @@ def prompt_for_model_selection(current_models: dict) -> dict:
         Updated dictionary with model selections
     """
     models = current_models.copy()
-    available_models = ["phi4", "gemma", "qwen_deepseek", "llama3", "mistral", "skip"]
+    available_models = ["phi4", "gemma", "qwen", "llama3", "mistral", "skip"]
     
     display_models_table()
     
@@ -76,7 +76,7 @@ def prompt_for_model_selection(current_models: dict) -> dict:
     solver_choice = Prompt.ask(
         "Select solver model", 
         choices=available_models, 
-        default=models.get("solver", "qwen_deepseek")
+        default=models.get("solver", "qwen")
     )
     
     if solver_choice != "skip":

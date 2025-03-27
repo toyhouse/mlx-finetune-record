@@ -23,7 +23,7 @@ class MathWorkflow:
     def __init__(
         self, 
         formatter_model: str = "phi4", 
-        solver_model: str = "qwen_deepseek", 
+        solver_model: str = "qwen", 
         summarizer_model: str = "phi4", 
         use_mlx: bool = True
     ):
@@ -31,10 +31,10 @@ class MathWorkflow:
         Initialize the workflow by creating all required agents.
         
         Args:
-            formatter_model: Name of the model for the formatter agent (default: phi4)
-            solver_model: Name of the model for the solver agent (default: qwen_deepseek)
-            summarizer_model: Name of the model for the summarizer agent (default: phi4)
-            use_mlx: Whether to use the MLX-based AceMath model (default: True)
+            formatter_model (str, optional): Model for formatting questions. Defaults to "phi4".
+            solver_model (str, optional): Model for solving problems. Defaults to "qwen".
+            summarizer_model (str, optional): Model for summarizing solutions. Defaults to "phi4".
+            use_mlx (bool, optional): Whether to use MLX-based AceMath agent. Defaults to True.
         """
         self.models = {
             "formatter": formatter_model,
