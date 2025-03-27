@@ -13,12 +13,12 @@ class SummarizerAgent(Agent):
     Agent responsible for summarizing solutions to be concise and clear.
     """
     
-    def __init__(self, model_name: str = "phi4"):
+    def __init__(self, model_name: str = "deepseek"):
         """
         Initialize the summarizer agent.
         
         Args:
-            model_name: Name of the Ollama model to use (default: phi4)
+            model_name: Name of the Ollama model to use (default: deepseek)
         """
         super().__init__(model_name)
     
@@ -34,15 +34,9 @@ class SummarizerAgent(Agent):
             console.print(f"[green]✓ {self.model_name} loaded for summarization[/green]")
             return True
         except Exception as e:
-            console.print(f"[bold red]Error loading {self.model_name}: {str(e)}[/bold red]")
-            console.print("[yellow]Falling back to phi4 for summarization[/yellow]")
-            try:
-                self.model_name = "phi4"
-                self.model = Ollama(model="phi4")
-                return True
-            except Exception as e:
-                console.print(f"[bold red]Error loading fallback model: {str(e)}[/bold red]")
-                return False
+            console.print(f"[bold red]Error loading model: {str(e)}[/bold red]")
+            console.print("[yellow]No fallback model configured[/yellow]")
+            return False
     
     def process(self, question: str, solution: str) -> str:
         """
