@@ -8,14 +8,14 @@ The Agentic Math Workflow processes math problems through a sequence of speciali
 
 1. **Formatter Agent**: Cleans and standardizes the input problem
 2. **Solver Agent**: Applies mathematical reasoning to solve the problem
-3. **AceMath Agent**: Provides alternative solutions (uses Indo Math Teacher model)
+3. **AceMath Agent**: Provides alternative solutions (uses MLX acceleration)
 4. **Summarizer Agent**: Creates a concise explanation of the solution
 
 Each agent is powered by a different language model optimized for its specific task, creating a more effective system than using a single model.
 
 ## The Indo Math Teacher Integration
 
-The AceMath Agent integrates with the Indo Math Teacher model, which is specialized for teaching mathematics using the Gasing method in Bahasa Indonesia. This model:
+The workflow can use the Indo Math Teacher model, which is specialized for teaching mathematics using the Gasing method in Bahasa Indonesia. This model:
 
 - Provides step-by-step explanations in a conversational teaching style
 - Uses visual and hands-on methods to explain concepts
@@ -47,9 +47,9 @@ You can specify which models to use directly from the command line:
 ```bash
 # With virtual environment activated:
 python -m agentic_workflow.main \
-    --formatter_model=phi3 \
-    --solver_model=indo_math_teacher \
-    --summarizer_model=llama2 \
+    --formatter_model=qwen:1.8b \
+    --solver_model=qwen:1.8b \
+    --summarizer_model=deepseek-r1:1.5b \
     --use_mlx
 ```
 
@@ -62,9 +62,9 @@ python -m agentic_workflow.main \
 ```
 
 Available command-line options:
-- `--formatter_model`: Model for formatting questions (default: phi4)
-- `--solver_model`: Primary model for solving problems (default: qwen_deepseek)
-- `--summarizer_model`: Model for summarizing solutions (default: phi4)
+- `--formatter_model`: Model for formatting questions (default: qwen:1.8b)
+- `--solver_model`: Primary model for solving problems (default: qwen:1.8b)
+- `--summarizer_model`: Model for summarizing solutions (default: deepseek-r1:1.5b)
 - `--use_mlx`: Enable MLX-based AceMath agent (default: True)
 - `--no_mlx`: Disable MLX-based AceMath agent
 - `--question`: Process a single question and exit
@@ -72,7 +72,7 @@ Available command-line options:
 
 ### Automatic Model Pulling
 
-When using default models (`phi4`, `qwen`, `gemma`), the workflow will automatically attempt to pull the corresponding model using Ollama. This ensures you have the latest version of the model without manual intervention.
+When using the default models (`qwen:1.8b`, `deepseek-r1:1.5b`), the workflow will automatically attempt to pull these models using Ollama. This ensures you have the latest version of the model without manual intervention.
 
 If a model cannot be pulled (e.g., no internet connection), the workflow will continue with a warning message.
 
@@ -82,9 +82,9 @@ If you encounter issues with the Python command not being found, use the full pa
 
 ```bash
 /path/to/venv/bin/python -m agentic_workflow.main \
-    --formatter_model=phi3 \
-    --solver_model=indo_math_teacher \
-    --summarizer_model=llama2
+    --formatter_model=qwen:1.8b \
+    --solver_model=qwen:1.8b \
+    --summarizer_model=deepseek-r1:1.5b
 ```
 
 For example:
@@ -108,10 +108,10 @@ workflow = MathWorkflow()
 
 # Or customize models
 workflow = MathWorkflow(
-    formatter_model="deepseek-r1:1.5b",  # For input formatting
-    solver_model="qwen:1.8b",            # Primary problem solver  
-    summarizer_model="deepseek-r1:1.5b", # For creating summaries
-    use_mlx=True                         # Enable MLX-based AceMath agent
+    formatter_model="qwen:1.8b",            # For input formatting
+    solver_model="qwen:1.8b",               # Primary problem solver  
+    summarizer_model="deepseek-r1:1.5b",    # For creating summaries
+    use_mlx=True                            # Enable MLX-based AceMath agent
 )
 
 # Process a math question
@@ -129,14 +129,20 @@ You can configure which models to use for each agent:
 
 ```python
 workflow = MathWorkflow(
-    formatter_model="deepseek-r1:1.5b",  # For input formatting
-    solver_model="qwen:1.8b",            # Primary problem solver  
-    summarizer_model="deepseek-r1:1.5b", # For creating summaries
-    use_mlx=True                         # Enable MLX-based AceMath agent
+    formatter_model="qwen:1.8b",            # For input formatting
+    solver_model="qwen:1.8b",               # Primary problem solver  
+    summarizer_model="deepseek-r1:1.5b",    # For creating summaries
+    use_mlx=True                            # Enable MLX-based AceMath agent
 )
 ```
 
-Or change models during an interactive session by selecting the "Change models" option.
+Or change models during an interactive session by typing "models" at the prompt.
+
+## Model Recommendations
+
+- **Formatter**: `qwen:1.8b` or `phi3` work well for parsing and formatting questions
+- **Solver**: `qwen:1.8b` for general math, `indo_math_teacher` for Indonesian math explanations
+- **Summarizer**: `deepseek-r1:1.5b` or `llama2` for concise summaries
 
 ## Requirements
 
@@ -144,3 +150,26 @@ Or change models during an interactive session by selecting the "Change models" 
 - MLX framework
 - Ollama for local model inference
 - Rich for interactive display
+
+## Environment Setup
+
+1. Create a virtual environment:
+   ```bash
+   python -m venv .venv
+   source .venv/bin/activate
+   ```
+
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. Start Ollama server:
+   ```bash
+   ollama serve
+   ```
+
+4. Run the workflow:
+   ```bash
+   python -m agentic_workflow.main
+   ```
