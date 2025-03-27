@@ -108,10 +108,10 @@ workflow = MathWorkflow()
 
 # Or customize models
 workflow = MathWorkflow(
-    formatter_model="deepseek",   # For input formatting
-    solver_model="qwen",          # Primary problem solver  
-    summarizer_model="llama3",    # For creating summaries
-    use_mlx=True                  # Enable MLX-based AceMath agent
+    formatter_model="deepseek-r1:1.5b",  # For input formatting
+    solver_model="qwen:1.8b",            # Primary problem solver  
+    summarizer_model="deepseek-r1:1.5b", # For creating summaries
+    use_mlx=True                         # Enable MLX-based AceMath agent
 )
 
 # Process a math question
@@ -129,10 +129,10 @@ You can configure which models to use for each agent:
 
 ```python
 workflow = MathWorkflow(
-    formatter_model="deepseek",   # For input formatting
-    solver_model="qwen",          # Primary problem solver  
-    summarizer_model="llama3",    # For creating summaries
-    use_mlx=True                  # Enable MLX-based AceMath agent
+    formatter_model="deepseek-r1:1.5b",  # For input formatting
+    solver_model="qwen:1.8b",            # Primary problem solver  
+    summarizer_model="deepseek-r1:1.5b", # For creating summaries
+    use_mlx=True                         # Enable MLX-based AceMath agent
 )
 ```
 

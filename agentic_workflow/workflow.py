@@ -59,11 +59,8 @@ class MathWorkflow:
         
         # Define default models that might need automatic pulling
         default_models_to_pull = {
-            "phi4": "microsoft/Phi-3-mini-4k-instruct",
             "qwen": "qwen:1.8b",
-            "qwen2-math": "qwen2-math:7b",
-            "deepseek": "deepseek/deepseek-instruct",
-            "gemma": "google/gemma-7b-it"
+            "deepseek": "deepseek-r1:1.5b"
         }
         
         # Initialize formatter agent
