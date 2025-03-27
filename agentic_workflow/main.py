@@ -10,8 +10,8 @@ def parse_args():
     parser = argparse.ArgumentParser(description="Agentic Math Workflow")
     
     # Model arguments
-    parser.add_argument("--formatter_model", type=str, default="deepseek-r1:1.5b",
-                        help="Model for formatting questions (default: deepseek-r1:1.5b)")
+    parser.add_argument("--formatter_model", type=str, default="qwen:1.8b",
+                        help="Model for formatting questions (default: qwen:1.8b)")
     parser.add_argument("--solver_model", type=str, default="qwen:1.8b",
                         help="Primary model for solving problems (default: qwen:1.8b)")
     parser.add_argument("--summarizer_model", type=str, default="deepseek-r1:1.5b",
