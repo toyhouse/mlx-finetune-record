@@ -72,7 +72,11 @@ class MathWorkflow:
                 ollama.pull(default_models_to_pull[self.models["formatter"]])
             except Exception as e:
                 console.print(f"[red]Failed to pull model: {e}[/red]")
-        self.formatter.setup()
+        
+        # Try to set up the formatter agent
+        if not self.formatter.setup():
+            console.print(f"[bold red]Failed to load formatter model: {self.models['formatter']}[/bold red]")
+            console.print("[yellow]Workflow initialization may be incomplete[/yellow]")
         
         # Initialize solver agent
         self.solver = SolverAgent(self.models["solver"])
@@ -142,15 +146,7 @@ class MathWorkflow:
             alternative_solution = self.acemath.process(formatted_question)
             results["alternative_solution"] = alternative_solution
         else:
-            # Use a different model as alternative
-            # If we have a different model available as a fallback
-            alt_model = "gemma" if self.models["solver"] != "gemma" else "phi4"
-            alt_solver = SolverAgent(alt_model)
-            if alt_solver.setup():
-                alternative_solution = alt_solver.process(formatted_question)
-                results["alternative_solution"] = alternative_solution
-            else:
-                results["alternative_solution"] = "Alternative solution not available."
+            results["alternative_solution"] = "Alternative solution not available."
         
         # Step 4: Summarize the solution
         summary = self.summarizer.process(formatted_question, primary_solution)

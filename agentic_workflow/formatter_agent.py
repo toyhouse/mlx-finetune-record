@@ -37,14 +37,8 @@ class FormatterAgent(Agent):
             return True
         except Exception as e:
             console.print(f"[bold red]Error loading {self.model_name}: {str(e)}[/bold red]")
-            console.print("[yellow]Falling back to phi4 for formatting[/yellow]")
-            try:
-                self.model_name = "phi4"
-                self.model = Ollama(model="phi4")
-                return True
-            except Exception as e:
-                console.print(f"[bold red]Error loading fallback model: {str(e)}[/bold red]")
-                return False
+            console.print("[yellow]No fallback model configured[/yellow]")
+            return False
     
     def process(self, question: str) -> Tuple[str, bool, str]:
         """
