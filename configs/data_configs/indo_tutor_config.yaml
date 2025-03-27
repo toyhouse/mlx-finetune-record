@@ -1,0 +1,5 @@
+name: "indo_tutor"
+train_path: "./data/indo_tutor/train.jsonl"
+validation_data: "./data/indo_tutor/valid.jsonl"
+format: "jsonl"
+text_field: "text"

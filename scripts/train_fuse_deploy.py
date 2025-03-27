@@ -181,6 +181,14 @@ def train_model(model_config_path, data_config_path, training_config_path, adapt
     print("STEP 1: TRAINING MODEL")
     print("="*50)
     
+    # Import tqdm for progress bar
+    try:
+        from tqdm import tqdm
+    except ImportError:
+        print("Warning: tqdm not installed. Installing...")
+        subprocess.run([sys.executable, '-m', 'pip', 'install', 'tqdm'], check=True)
+        from tqdm import tqdm
+    
     # Load configurations from YAML files
     model_config = load_yaml_config(model_config_path)
     model_name = model_config.get('name', 'Unknown Model')
@@ -212,10 +220,47 @@ def train_model(model_config_path, data_config_path, training_config_path, adapt
     ]
     
     print(f"Running training command: {' '.join(command)}")
-    result = subprocess.run(command, capture_output=True, text=True)
     
-    if result.returncode != 0:
-        print(f"Error during training: {result.stderr}")
+    # Use subprocess.Popen to capture output and create progress bar
+    process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, universal_newlines=True)
+    
+    # Total iterations for progress bar
+    total_iterations = training_config.get('iterations', 500)
+    
+    # Create progress bar
+    with tqdm(total=total_iterations, desc="Training Progress", unit="iter", 
+              bar_format="{l_bar}{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}]") as pbar:
+        current_iteration = 0
+        
+        # Read output line by line
+        while True:
+            output = process.stdout.readline()
+            if output == '' and process.poll() is not None:
+                break
+            
+            if output:
+                # Check if the line indicates progress
+                if 'iter' in output.lower():
+                    try:
+                        # Extract current iteration from the output
+                        current_iteration += 1
+                        pbar.update(1)
+                    except Exception as e:
+                        print(f"Error updating progress bar: {e}")
+                
+                # Print the output
+                print(output.strip())
+        
+        # Check for any errors
+        stderr_output = process.stderr.read()
+        if stderr_output:
+            print("Error output:", stderr_output)
+    
+    # Wait for the process to complete and get return code
+    return_code = process.poll()
+    
+    if return_code != 0:
+        print(f"Error during training: Return code {return_code}")
         sys.exit(1)
     else:
         print(f"Training completed successfully!")
@@ -284,6 +329,7 @@ def create_ollama_model(fused_model_path, deployment_config_path):
     top_p = deployment_config.get('top_p', 0.7)
     start_token = deployment_config.get('start', '')
     stop_token = deployment_config.get('stop', '')
+    additional_stops = deployment_config.get('additional_stops', [])
     system_prompt = deployment_config.get('system_prompt', '')
     modelfile_template_path = deployment_config.get('modelfile_template')
     
@@ -307,8 +353,7 @@ def create_ollama_model(fused_model_path, deployment_config_path):
         '{top_p}': str(top_p),
         '{start}': start_token,
         '{stop}': stop_token,
-        '{system_prompt}': system_prompt,
-        '{SYSTEM_PROMPT}': system_prompt  # Adding this for backward compatibility
+        '{system_prompt}': system_prompt
     }
     
     for placeholder, value in replacements.items():

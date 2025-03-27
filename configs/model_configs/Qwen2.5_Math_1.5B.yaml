@@ -1,0 +1,4 @@
+name: "Qwen/Qwen2.5-Math-1.5B"
+model_path: "Qwen/Qwen2.5-Math-1.5B"
+description: "Qwen 2.5 Math 1.5B - specialized for mathematical computations"
+max_sequence_length: 2048

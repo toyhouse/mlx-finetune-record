@@ -33,6 +33,20 @@ htmlcov/
 # Ignore backup folder
 _backup/
 
+# Ignore large model files
+*.gguf
+*.safetensors
+*.tar
+llama.cpp/
+model_files/
+gguf_model/
+large_models/
+
+# Ignore specific large files
+indo_math_teacher.tar
+model.safetensors
+model.safetensors.index.json
+
 # Large data files
 *.tar.gz
 *.zip

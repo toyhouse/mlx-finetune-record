@@ -4,5 +4,8 @@ PARAMETER temperature {temperature}
 PARAMETER top_p {top_p}
 PARAMETER stop {start}
 PARAMETER stop {stop}
+PARAMETER stop ">>> "
+PARAMETER stop "\n\nHuman:"
+PARAMETER stop "\nHuman:"
 
 SYSTEM {system_prompt}

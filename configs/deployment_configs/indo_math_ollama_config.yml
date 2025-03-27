@@ -1,0 +1,12 @@
+name: "qwen_math_calculator"
+platform: "ollama"
+model_name: "indo_math_teacher"
+temperature: 0.1  # Reduced from 0.3 for more deterministic responses
+top_p: 0.9  # Increased from 0.7 to consider more likely tokens
+stop: "[/INST]"
+start: "[INST]"
+additional_stops: [">>> ", "\n\nHuman:", "\nHuman:"]  # Added to prevent runaway generation
+system_prompt: "You are a math teacher using the Gasing method"
+fused_model_path: "./fused_model/Qwen2.5-Math-1.5B_indo_tutor"
+modelfile_template: "./templates/Modelfile_Template.txt"
+num_predict: 200  # Limiting maximum token generation to ensure concise responses
