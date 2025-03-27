@@ -1,6 +1,6 @@
 {
     "model": {
-        "name": "/Users/Henrykoo/Documents/mlx-finetune-record/models/Phi-2",
+        "name": "microsoft/phi-2",
         "type": "transformer"
     },
     "data": {
