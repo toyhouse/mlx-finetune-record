@@ -59,8 +59,9 @@ class MathWorkflow:
         
         # Define default models that might need automatic pulling
         default_models_to_pull = {
-            "qwen": "qwen:1.8b",
-            "deepseek": "deepseek-r1:1.5b"
+            self.models["formatter"]: f"{self.models['formatter']}:1.8b",
+            self.models["solver"]: f"{self.models['solver']}:1.8b",
+            self.models["summarizer"]: f"{self.models['summarizer']}:1.5b"
         }
         
         # Initialize formatter agent

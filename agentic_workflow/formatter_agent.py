@@ -36,7 +36,7 @@ class FormatterAgent(Agent):
             console.print(f"[green]✓ {self.model_name} loaded for question formatting[/green]")
             return True
         except Exception as e:
-            console.print(f"[bold red]Error loading {self.model_name}: {str(e)}[/bold red]")
+            console.print(f"[bold red]Error loading model: {str(e)}[/bold red]")
             console.print("[yellow]No fallback model configured[/yellow]")
             return False
     
