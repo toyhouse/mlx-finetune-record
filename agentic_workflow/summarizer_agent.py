@@ -13,12 +13,12 @@ class SummarizerAgent(Agent):
     Agent responsible for summarizing solutions to be concise and clear.
     """
     
-    def __init__(self, model_name: str = "deepseek"):
+    def __init__(self, model_name: str = "deepseek-r1:1.5b"):
         """
         Initialize the summarizer agent.
         
         Args:
-            model_name: Name of the Ollama model to use (default: deepseek)
+            model_name: Name of the Ollama model to use (default: deepseek-r1:1.5b)
         """
         super().__init__(model_name)
     

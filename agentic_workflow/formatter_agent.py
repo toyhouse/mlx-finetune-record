@@ -15,12 +15,12 @@ class FormatterAgent(Agent):
     Agent responsible for validating and formatting math questions.
     """
     
-    def __init__(self, model_name: str = "phi4"):
+    def __init__(self, model_name: str = "deepseek-r1:1.5b"):
         """
         Initialize the formatter agent.
         
         Args:
-            model_name: Name of the Ollama model to use (default: phi4)
+            model_name: Name of the Ollama model to use (default: deepseek-r1:1.5b)
         """
         super().__init__(model_name)
     

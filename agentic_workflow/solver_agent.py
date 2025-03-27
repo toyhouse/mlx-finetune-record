@@ -13,12 +13,12 @@ class SolverAgent(Agent):
     Agent responsible for solving math problems with detailed explanations.
     """
     
-    def __init__(self, model_name: str = "qwen"):
+    def __init__(self, model_name: str = "qwen:1.8b"):
         """
         Initialize the solver agent.
         
         Args:
-            model_name: Name of the Ollama model to use (default: qwen)
+            model_name: Name of the Ollama model to use (default: qwen:1.8b)
         """
         super().__init__(model_name)
     

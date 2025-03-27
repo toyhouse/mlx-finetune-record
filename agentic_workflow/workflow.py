@@ -22,18 +22,18 @@ class MathWorkflow:
     
     def __init__(
         self, 
-        formatter_model: str = "deepseek", 
-        solver_model: str = "qwen", 
-        summarizer_model: str = "deepseek", 
+        formatter_model: str = "deepseek-r1:1.5b", 
+        solver_model: str = "qwen:1.8b", 
+        summarizer_model: str = "deepseek-r1:1.5b", 
         use_mlx: bool = True
     ):
         """
         Initialize the workflow by creating all required agents.
         
         Args:
-            formatter_model (str, optional): Model for formatting questions. Defaults to "deepseek".
-            solver_model (str, optional): Model for solving problems. Defaults to "qwen".
-            summarizer_model (str, optional): Model for summarizing solutions. Defaults to "qwen".
+            formatter_model (str, optional): Model for formatting questions. Defaults to "deepseek-r1:1.5b".
+            solver_model (str, optional): Model for solving problems. Defaults to "qwen:1.8b".
+            summarizer_model (str, optional): Model for summarizing solutions. Defaults to "deepseek-r1:1.5b".
             use_mlx (bool, optional): Whether to use MLX-based AceMath agent. Defaults to True.
         """
         self.models = {
@@ -57,20 +57,13 @@ class MathWorkflow:
         """
         console.print("[bold blue]Setting up math workflow agents...[/bold blue]")
         
-        # Define default models that might need automatic pulling
-        default_models_to_pull = {
-            self.models["formatter"]: f"{self.models['formatter']}:1.8b",
-            self.models["solver"]: f"{self.models['solver']}:1.8b",
-            self.models["summarizer"]: f"{self.models['summarizer']}:1.5b"
-        }
-        
         # Initialize formatter agent
         self.formatter = FormatterAgent(self.models["formatter"])
-        if self.models["formatter"] in default_models_to_pull:
-            console.print(f"[yellow]Pulling default {self.models['formatter']} model...[/yellow]")
+        if self.models["formatter"] in ["deepseek-r1:1.5b", "qwen:1.8b"]:
+            console.print(f"[yellow]Pulling formatter model {self.models['formatter']}...[/yellow]")
             try:
                 import ollama
-                ollama.pull(default_models_to_pull[self.models["formatter"]])
+                ollama.pull(self.models["formatter"])
             except Exception as e:
                 console.print(f"[red]Failed to pull model: {e}[/red]")
         
@@ -81,22 +74,22 @@ class MathWorkflow:
         
         # Initialize solver agent
         self.solver = SolverAgent(self.models["solver"])
-        if self.models["solver"] in default_models_to_pull:
-            console.print(f"[yellow]Pulling default {self.models['solver']} model...[/yellow]")
+        if self.models["solver"] in ["deepseek-r1:1.5b", "qwen:1.8b"]:
+            console.print(f"[yellow]Pulling solver model {self.models['solver']}...[/yellow]")
             try:
                 import ollama
-                ollama.pull(default_models_to_pull[self.models["solver"]])
+                ollama.pull(self.models["solver"])
             except Exception as e:
                 console.print(f"[red]Failed to pull model: {e}[/red]")
         self.solver.setup()
         
         # Initialize summarizer agent
         self.summarizer = SummarizerAgent(self.models["summarizer"])
-        if self.models["summarizer"] in default_models_to_pull:
-            console.print(f"[yellow]Pulling default {self.models['summarizer']} model...[/yellow]")
+        if self.models["summarizer"] in ["deepseek-r1:1.5b", "qwen:1.8b"]:
+            console.print(f"[yellow]Pulling summarizer model {self.models['summarizer']}...[/yellow]")
             try:
                 import ollama
-                ollama.pull(default_models_to_pull[self.models["summarizer"]])
+                ollama.pull(self.models["summarizer"])
             except Exception as e:
                 console.print(f"[red]Failed to pull model: {e}[/red]")
         self.summarizer.setup()

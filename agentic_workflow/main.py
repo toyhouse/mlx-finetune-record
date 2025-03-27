@@ -10,12 +10,12 @@ def parse_args():
     parser = argparse.ArgumentParser(description="Agentic Math Workflow")
     
     # Model arguments
-    parser.add_argument("--formatter_model", type=str, default="deepseek",
-                        help="Model for formatting questions (default: deepseek)")
-    parser.add_argument("--solver_model", type=str, default="qwen",
-                        help="Primary model for solving problems (default: qwen)")
-    parser.add_argument("--summarizer_model", type=str, default="deepseek",
-                        help="Model for summarizing solutions (default: deepseek)")
+    parser.add_argument("--formatter_model", type=str, default="deepseek-r1:1.5b",
+                        help="Model for formatting questions (default: deepseek-r1:1.5b)")
+    parser.add_argument("--solver_model", type=str, default="qwen:1.8b",
+                        help="Primary model for solving problems (default: qwen:1.8b)")
+    parser.add_argument("--summarizer_model", type=str, default="deepseek-r1:1.5b",
+                        help="Model for summarizing solutions (default: deepseek-r1:1.5b)")
     parser.add_argument("--use_mlx", action="store_true", default=True,
                         help="Enable MLX-based AceMath agent (default: True)")
     parser.add_argument("--no_mlx", action="store_false", dest="use_mlx",
