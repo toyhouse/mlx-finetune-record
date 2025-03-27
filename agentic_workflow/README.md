@@ -70,6 +70,12 @@ Available command-line options:
 - `--question`: Process a single question and exit
 - `--output`: Output file for results (when used with --question)
 
+### Automatic Model Pulling
+
+When using default models (`phi4`, `qwen`, `gemma`), the workflow will automatically attempt to pull the corresponding model using Ollama. This ensures you have the latest version of the model without manual intervention.
+
+If a model cannot be pulled (e.g., no internet connection), the workflow will continue with a warning message.
+
 ### Troubleshooting
 
 If you encounter issues with the Python command not being found, use the full path to your virtual environment's Python:

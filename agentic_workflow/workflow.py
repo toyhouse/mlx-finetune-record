@@ -57,16 +57,44 @@ class MathWorkflow:
         """
         console.print("[bold blue]Setting up math workflow agents...[/bold blue]")
         
+        # Define default models that might need automatic pulling
+        default_models_to_pull = {
+            "phi4": "microsoft/Phi-3-mini-4k-instruct",
+            "qwen": "Qwen/Qwen2-7B-Instruct",
+            "gemma": "google/gemma-7b-it"
+        }
+        
         # Initialize formatter agent
         self.formatter = FormatterAgent(self.models["formatter"])
+        if self.models["formatter"] in default_models_to_pull:
+            console.print(f"[yellow]Pulling default {self.models['formatter']} model...[/yellow]")
+            try:
+                import ollama
+                ollama.pull(default_models_to_pull[self.models["formatter"]])
+            except Exception as e:
+                console.print(f"[red]Failed to pull model: {e}[/red]")
         self.formatter.setup()
         
         # Initialize solver agent
         self.solver = SolverAgent(self.models["solver"])
+        if self.models["solver"] in default_models_to_pull:
+            console.print(f"[yellow]Pulling default {self.models['solver']} model...[/yellow]")
+            try:
+                import ollama
+                ollama.pull(default_models_to_pull[self.models["solver"]])
+            except Exception as e:
+                console.print(f"[red]Failed to pull model: {e}[/red]")
         self.solver.setup()
         
         # Initialize summarizer agent
         self.summarizer = SummarizerAgent(self.models["summarizer"])
+        if self.models["summarizer"] in default_models_to_pull:
+            console.print(f"[yellow]Pulling default {self.models['summarizer']} model...[/yellow]")
+            try:
+                import ollama
+                ollama.pull(default_models_to_pull[self.models["summarizer"]])
+            except Exception as e:
+                console.print(f"[red]Failed to pull model: {e}[/red]")
         self.summarizer.setup()
         
         # Initialize AceMath agent if enabled
