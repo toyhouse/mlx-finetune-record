@@ -8,8 +8,22 @@ if ! command -v ollama &> /dev/null; then
     exit 1
 fi
 
-# Create temporary Modelfile
-cat > Modelfile.temp << EOL
+# Create directory for model files
+mkdir -p model_files
+
+# Download model files
+echo "Downloading model files..."
+curl -L https://huggingface.co/Lckoo1230/indo-math-teacher-complete/resolve/main/added_tokens.json -o model_files/added_tokens.json
+curl -L https://huggingface.co/Lckoo1230/indo-math-teacher-complete/resolve/main/config.json -o model_files/config.json
+curl -L https://huggingface.co/Lckoo1230/indo-math-teacher-complete/resolve/main/merges.txt -o model_files/merges.txt
+curl -L https://huggingface.co/Lckoo1230/indo-math-teacher-complete/resolve/main/model.safetensors -o model_files/model.safetensors
+curl -L https://huggingface.co/Lckoo1230/indo-math-teacher-complete/resolve/main/special_tokens_map.json -o model_files/special_tokens_map.json
+curl -L https://huggingface.co/Lckoo1230/indo-math-teacher-complete/resolve/main/tokenizer.json -o model_files/tokenizer.json
+curl -L https://huggingface.co/Lckoo1230/indo-math-teacher-complete/resolve/main/tokenizer_config.json -o model_files/tokenizer_config.json
+curl -L https://huggingface.co/Lckoo1230/indo-math-teacher-complete/resolve/main/vocab.json -o model_files/vocab.json
+
+# Create Modelfile
+cat > Modelfile_Indo_Math_Teacher << EOL
 FROM Qwen/Qwen2.5-Math-1.5B
 SYSTEM "You are a math teacher using the Gasing method"
 
@@ -17,19 +31,15 @@ PARAMETER temperature 0.1
 PARAMETER top_p 0.9
 PARAMETER num_predict 200
 
-# Set stop sequences
-TEMPLATE "{{ .System }}\n\n{{ .Prompt }}"
+TEMPLATE "{{.System}}\n\n{{.Prompt}}"
 STOP "[/INST]"
 STOP ">>> "
 STOP "\n\nHuman:"
 STOP "\nHuman:"
 EOL
 
-# Create the model in Ollama
-ollama create indo_math_teacher -f Modelfile.temp
-
-# Clean up
-rm Modelfile.temp
+# Create the Ollama model
+ollama create indo_math_teacher -f Modelfile_Indo_Math_Teacher
 
 echo "Indo Math Teacher installed successfully!"
 echo "Run with: ollama run indo_math_teacher"
