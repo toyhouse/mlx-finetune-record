@@ -23,7 +23,7 @@ class MathWorkflow:
     def __init__(
         self, 
         formatter_model: str = "deepseek", 
-        solver_model: str = "deepseek", 
+        solver_model: str = "qwen", 
         summarizer_model: str = "deepseek", 
         use_mlx: bool = True
     ):
@@ -32,8 +32,8 @@ class MathWorkflow:
         
         Args:
             formatter_model (str, optional): Model for formatting questions. Defaults to "deepseek".
-            solver_model (str, optional): Model for solving problems. Defaults to "deepseek".
-            summarizer_model (str, optional): Model for summarizing solutions. Defaults to "deepseek".
+            solver_model (str, optional): Model for solving problems. Defaults to "qwen".
+            summarizer_model (str, optional): Model for summarizing solutions. Defaults to "qwen".
             use_mlx (bool, optional): Whether to use MLX-based AceMath agent. Defaults to True.
         """
         self.models = {
@@ -60,9 +60,10 @@ class MathWorkflow:
         # Define default models that might need automatic pulling
         default_models_to_pull = {
             "phi4": "microsoft/Phi-3-mini-4k-instruct",
-            "qwen": "Qwen/Qwen2-7B-Instruct",
-            "gemma": "google/gemma-7b-it",
-            "deepseek": "deepseek/deepseek-instruct"
+            "qwen": "qwen:1.8b",
+            "qwen2-math": "qwen2-math:7b",
+            "deepseek": "deepseek/deepseek-instruct",
+            "gemma": "google/gemma-7b-it"
         }
         
         # Initialize formatter agent
