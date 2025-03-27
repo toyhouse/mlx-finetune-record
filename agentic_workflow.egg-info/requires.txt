@@ -1,0 +1,4 @@
+mlx
+ollama
+rich
+pydantic

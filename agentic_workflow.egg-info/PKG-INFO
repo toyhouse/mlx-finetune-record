@@ -1,0 +1,8 @@
+Metadata-Version: 2.4
+Name: agentic_workflow
+Version: 0.1.0
+Requires-Dist: mlx
+Requires-Dist: ollama
+Requires-Dist: rich
+Requires-Dist: pydantic
+Dynamic: requires-dist

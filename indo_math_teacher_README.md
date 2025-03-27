@@ -47,7 +47,7 @@ ollama run indo_math_teacher
 ### Option 2: One-Line Installation (if Ollama is installed)
 
 ```bash
-curl -s https://raw.githubusercontent.com/YOUR_USERNAME/indo-math-teacher-gasing/main/install.sh | bash
+curl -s https://huggingface.co/Lckoo1230/indo-math-teacher-complete/resolve/main/install.sh | bash
 ```
 
 ## Example Usage

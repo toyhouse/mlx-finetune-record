@@ -1,0 +1,2 @@
+[console_scripts]
+math_workflow = agentic_workflow.main:main
