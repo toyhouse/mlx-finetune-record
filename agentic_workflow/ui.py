@@ -41,11 +41,13 @@ def display_models_table() -> None:
     model_table.add_column("Model", style="cyan")
     model_table.add_column("Description")
     
+    model_table.add_row("deepseek", "DeepSeek is a versatile AI model for reasoning and problem-solving")
     model_table.add_row("phi4", "Microsoft's phi-4 is a compact yet powerful instruction model")
     model_table.add_row("gemma", "Google's Gemma is a lightweight LLM for various tasks")
     model_table.add_row("qwen", "Qwen is a powerful language model for general reasoning")
     model_table.add_row("llama3", "Meta's Llama 3 is a versatile general-purpose model")
     model_table.add_row("mistral", "Mistral AI's model excels at instruction following")
+    model_table.add_row("skip", "Skip model selection")
     
     console.print(model_table)
 
@@ -60,14 +62,14 @@ def prompt_for_model_selection(current_models: dict) -> dict:
         Updated dictionary with model selections
     """
     models = current_models.copy()
-    available_models = ["phi4", "gemma", "qwen", "llama3", "mistral", "skip"]
+    available_models = ["deepseek", "phi4", "gemma", "qwen", "llama3", "mistral", "skip"]
     
     display_models_table()
     
     formatter_choice = Prompt.ask(
         "\nSelect formatter model", 
         choices=available_models, 
-        default=models.get("formatter", "phi4")
+        default=models.get("formatter", "deepseek")
     )
     
     if formatter_choice != "skip":
@@ -85,7 +87,7 @@ def prompt_for_model_selection(current_models: dict) -> dict:
     summarizer_choice = Prompt.ask(
         "Select summarizer model", 
         choices=available_models, 
-        default=models.get("summarizer", "phi4")
+        default=models.get("summarizer", "deepseek")
     )
     
     if summarizer_choice != "skip":

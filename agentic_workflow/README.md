@@ -103,8 +103,16 @@ You can also import and use the workflow programmatically:
 ```python
 from agentic_workflow.workflow import MathWorkflow
 
-# Create the workflow
+# Create the workflow with default DeepSeek models
 workflow = MathWorkflow()
+
+# Or customize models
+workflow = MathWorkflow(
+    formatter_model="deepseek",   # For input formatting
+    solver_model="phi4",          # Primary problem solver  
+    summarizer_model="llama3",    # For creating summaries
+    use_mlx=True                  # Enable MLX-based AceMath agent
+)
 
 # Process a math question
 results = workflow.process_question("Solve for x: 2x + 5 = 15")
@@ -121,10 +129,10 @@ You can configure which models to use for each agent:
 
 ```python
 workflow = MathWorkflow(
-    formatter_model="phi4",      # For input formatting
-    solver_model="qwen",         # Primary problem solver  
-    summarizer_model="phi4",     # For creating summaries
-    use_mlx=True                 # Enable MLX-based AceMath agent with Indo Math Teacher
+    formatter_model="deepseek",   # For input formatting
+    solver_model="phi4",          # Primary problem solver  
+    summarizer_model="llama3",    # For creating summaries
+    use_mlx=True                  # Enable MLX-based AceMath agent
 )
 ```
 
